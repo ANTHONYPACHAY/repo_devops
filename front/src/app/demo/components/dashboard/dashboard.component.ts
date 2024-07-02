@@ -20,6 +20,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
     subscription!: Subscription;
 
+    counterList: any[];
+
     constructor(private productService: ProductService, public layoutService: LayoutService) {
         this.subscription = this.layoutService.configUpdate$
         .pipe(debounceTime(25))
@@ -29,12 +31,45 @@ export class DashboardComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
+        this.initCounters();
         this.initChart();
         this.productService.getProductsSmall().then(data => this.products = data);
 
         this.items = [
             { label: 'Add New', icon: 'pi pi-fw pi-plus' },
             { label: 'Remove', icon: 'pi pi-fw pi-minus' }
+        ];
+    }
+
+    initCounters() {
+        this.counterList = [
+            {
+                label: 'Automatización',
+                detail: 'Automatización y Gestión de Configuración',
+                quantity: 0,
+                icon: 'pi pi-minus',
+                iconColor: 'text-green-500',
+                badgeColor: 'bg-blue-100',
+                url: ''
+            },
+            {
+                label: 'Infraestructura',
+                detail: 'Gestión de Infraestructura y Entornos',
+                quantity: 0,
+                icon: 'pi pi-minus',
+                iconColor: 'text-green-500',
+                badgeColor: 'bg-green-100',
+                url: ''
+            },
+            {
+                label: 'Contenerización',
+                detail: 'Contenerización y Automatización de Tareas',
+                quantity: 0,
+                icon: 'pi pi-minus',
+                iconColor: 'text-orange-500',
+                badgeColor: 'bg-orange-100',
+                url: ''
+            }
         ];
     }
 
