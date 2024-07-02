@@ -1,0 +1,67 @@
+---
+- name: Setup Angular, Java Spring, and PostgreSQL on Windows
+  hosts: windows
+  tasks:
+    - name: Ensure Chocolatey is installed
+      win_chocolatey:
+        name: chocolatey
+        state: present
+
+    - name: Install Node.js
+      win_chocolatey:
+        name: nodejs-lts
+        state: present
+
+    - name: Install Angular CLI
+      win_command: npm install -g @angular/cli
+      args:
+        creates: C:\Program Files\nodejs\node_modules\@angular\cli
+
+    - name: Create Angular project
+      win_command: ng new my-angular-app --defaults
+      args:
+        chdir: C:\Users\{{ ansible_user }}\
+
+    - name: Install JDK
+      win_chocolatey:
+        name: jdk8
+        state: present
+
+    - name: Install Spring Boot CLI
+      win_chocolatey:
+        name: springboot
+        state: present
+
+    - name: Install PostgreSQL
+      win_chocolatey:
+        name: postgresql
+        state: present
+
+    - name: Initialize PostgreSQL database cluster
+      win_command: initdb -D C:\Program Files\PostgreSQL\13\data
+      args:
+        creates: C:\Program Files\PostgreSQL\13\data\postgresql.conf
+
+    - name: Start PostgreSQL service
+      win_service:
+        name: postgresql-x64-13
+        start_mode: auto
+        state: started
+
+    - name: Create PostgreSQL user
+      win_shell: |
+        psql -c "CREATE USER {{ postgres_user }} WITH PASSWORD '{{ postgres_password }}';"
+      environment:
+        PATH: C:\Program Files\PostgreSQL\13\bin
+
+    - name: Create PostgreSQL database
+      win_shell: |
+        psql -c "CREATE DATABASE {{ postgres_db }} OWNER {{ postgres_user }};"
+      environment:
+        PATH: C:\Program Files\PostgreSQL\13\bin
+
+    - name: Grant permissions to PostgreSQL user
+      win_shell: |
+        psql -c "ALTER USER {{ postgres_user }} CREATEDB;"
+      environment:
+        PATH: C:\Program Files\PostgreSQL\13\bin

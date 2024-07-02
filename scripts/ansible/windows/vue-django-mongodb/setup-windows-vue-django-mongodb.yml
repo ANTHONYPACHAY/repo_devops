@@ -1,0 +1,56 @@
+---
+- name: Setup Vue.js, Python Django, and MongoDB on Windows
+  hosts: windows
+  tasks:
+    - name: Ensure Chocolatey is installed
+      win_chocolatey:
+        name: chocolatey
+        state: present
+
+    - name: Install Node.js
+      win_chocolatey:
+        name: nodejs-lts
+        state: present
+
+    - name: Install Vue CLI
+      win_command: npm install -g @vue/cli
+      args:
+        creates: C:\Program Files\nodejs\node_modules\@vue\cli
+
+    - name: Create Vue project
+      win_command: vue create my-vue-app -d
+      args:
+        chdir: C:\Users\{{ ansible_user }}
+
+    - name: Install Python
+      win_chocolatey:
+        name: python
+        state: present
+
+    - name: Install pip
+      win_command: python -m ensurepip
+
+    - name: Install Django
+      pip:
+        name: django
+        state: present
+
+    - name: Create Django project
+      win_command: django-admin startproject my_django_project
+      args:
+        chdir: C:\Users\{{ ansible_user }}
+
+    - name: Install MongoDB
+      win_chocolatey:
+        name: mongodb
+        state: present
+
+    - name: Start MongoDB service
+      win_service:
+        name: MongoDB
+        start_mode: auto
+        state: started
+
+    - name: Create MongoDB database and user
+      win_command: |
+        mongo mydb --eval 'db.createUser({user: "{{ mongo_user }}", pwd: "{{ mongo_password }}", roles:[{role:"dbAdmin", db:"mydb"}]});'

@@ -1,0 +1,55 @@
+{
+    "variables": {
+      "aws_access_key": "{{env `AWS_ACCESS_KEY_USER`}}",
+      "aws_secret_key": "{{env `AWS_SECRET_KEY_USER`}}"
+    },
+    "builders": [
+      {
+        "type": "amazon-ebs",
+        "access_key": "{{user `aws_access_key`}}",
+        "secret_key": "{{user `aws_secret_key`}}",
+        "region": "us-east-1",
+        "source_ami": "ami-0bfb14e483c08be7d",
+        "instance_type": "t2.micro",
+        "ssh_username": "ubuntu",
+        "ami_name": "r-plumber-amazon {{timestamp}}",
+        "subnet_id": "subnet-01b4f404016f8f807"
+      }
+    ],
+    "provisioners": [
+      {
+        "type": "shell",
+        "inline": [
+          "set -e",
+          "echo 'Empezando instalaciones...'",
+  
+          "sudo apt update && sudo apt upgrade -y",
+          "sudo apt install -y r-base",
+  
+          "sudo R -e \"install.packages('plumber', repos='https://cloud.r-project.org/')\"",
+  
+          "sudo chown -R ubuntu:ubuntu /home/ubuntu",
+          "echo 'Finalizando instalaciones...'"
+        ]
+      },
+      {
+        "type": "shell",
+        "inline": [
+          "set -e",
+          "echo 'Empezando configuraciones finales...'",
+          "echo 'Configuraciones finalizadas...'"
+        ]
+      },
+      {
+        "type": "shell",
+        "inline": [
+          "set -e",
+          "echo 'Ejecutando proyecto...'",
+  
+          "sudo R -e \"pr <- plumber::plumb('/path/to/your/plumber.R'); pr$run(host='0.0.0.0', port=8000)\"",
+          "echo 'Aplicación Plumber instalada y funcionando exitosamente.'"
+        ]
+      }
+    ]
+  }
+  

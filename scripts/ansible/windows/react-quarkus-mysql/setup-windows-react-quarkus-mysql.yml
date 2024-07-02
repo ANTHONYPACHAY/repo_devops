@@ -1,0 +1,79 @@
+---
+- name: Setup React, Java Quarkus, and MySQL on Windows
+  hosts: all
+  become: yes
+  vars:
+    node_version: "14.x"
+    mysql_user: "student"
+    mysql_password: "password"
+    mysql_database: "studentdb"
+  tasks:
+    - name: Install Chocolatey
+      win_shell: |
+        Set-ExecutionPolicy Bypass -Scope Process -Force
+        [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
+        iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+      args:
+        creates: C:\ProgramData\chocolatey\bin\choco.exe
+
+    - name: Install Node.js
+      win_chocolatey:
+        name: nodejs.install
+        version: "{{ node_version }}"
+        state: present
+        install_args: "'/VERYSILENT', '/SUPPRESSMSGBOXES', '/NORESTART', '/SP-'"
+
+    - name: Install Create React App globally
+      win_shell: npm install -g create-react-app
+
+    - name: Create React project
+      win_shell: npx create-react-app my-react-app
+      args:
+        chdir: C:\Users\{{ ansible_user }}
+
+    - name: Install JDK
+      win_chocolatey:
+        name: jdk8
+        state: present
+
+    - name: Install Quarkus CLI
+      win_shell: |
+        curl -Ls https://sh.jbang.dev | bash -s - app install --fresh --name quarkus dev.quarkus:quarkus-cli:2.8.2.Final
+      args:
+        creates: C:\ProgramData\jbang\bin\quarkus
+
+    - name: Install MySQL server
+      win_chocolatey:
+        name: mysql
+        state: present
+
+    - name: Start MySQL service
+      win_service:
+        name: MySQL
+        start_mode: auto
+        state: started
+
+    - name: Create MySQL database
+      win_shell: mysql -e "CREATE DATABASE {{ mysql_database }};"
+      args:
+        executable: cmd
+
+    - name: Create MySQL user
+      win_shell: mysql -e "CREATE USER '{{ mysql_user }}'@'localhost' IDENTIFIED BY '{{ mysql_password }}';"
+      args:
+        executable: cmd
+
+    - name: Grant MySQL user permissions
+      win_shell: mysql -e "GRANT ALL PRIVILEGES ON {{ mysql_database }}.* TO '{{ mysql_user }}'@'localhost';"
+      args:
+        executable: cmd
+
+    - name: Secure MySQL installation
+      win_shell: |
+        mysql -u root -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH 'mysql_native_password' BY 'root';"
+        mysql -u root -e "DELETE FROM mysql.user WHERE User='';"
+        mysql -u root -e "DROP DATABASE IF EXISTS test;"
+        mysql -u root -e "DELETE FROM mysql.db WHERE Db='test' OR Db='test\\_%';"
+        mysql -u root -e "FLUSH PRIVILEGES;"
+      args:
+        executable: cmd

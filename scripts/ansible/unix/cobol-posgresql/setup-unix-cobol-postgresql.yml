@@ -1,0 +1,62 @@
+---
+- name: Setup COBOL and PostgreSQL on Unix/Linux
+  hosts: all
+  become: yes
+  vars:
+    cobol_version: "3.1.2"
+    postgres_user: "student"
+    postgres_password: "password"
+    postgres_database: "studentdb"
+  tasks:
+    - name: Update and upgrade APT packages
+      apt:
+        update_cache: yes
+        upgrade: yes
+
+    - name: Install COBOL compiler (GnuCOBOL)
+      apt:
+        name: open-cobol
+        state: present
+
+    - name: Install PostgreSQL
+      apt:
+        name: postgresql
+        state: present
+
+    - name: Start PostgreSQL service
+      service:
+        name: postgresql
+        state: started
+        enabled: yes
+
+    - name: Create PostgreSQL database
+      postgresql_db:
+        name: "{{ postgres_database }}"
+        state: present
+
+    - name: Create PostgreSQL user
+      postgresql_user:
+        name: "{{ postgres_user }}"
+        password: "{{ postgres_password }}"
+        priv: "ALL"
+        db: "{{ postgres_database }}"
+        state: present
+
+    - name: Grant PostgreSQL user permissions
+      postgresql_privs:
+        name: "{{ postgres_user }}"
+        database: "{{ postgres_database }}"
+        privs: "ALL"
+        type: "database"
+        state: present
+
+    - name: Secure PostgreSQL installation
+      shell: |
+        sudo -u postgres psql -c "ALTER USER postgres WITH PASSWORD 'root';"
+        sudo -u postgres psql -c "DELETE FROM pg_catalog.pg_user WHERE usename='';"
+        sudo -u postgres psql -c "DROP DATABASE IF EXISTS test;"
+        sudo -u postgres psql -c "DELETE FROM pg_catalog.pg_user WHERE usename='test';"
+        sudo -u postgres psql -c "DROP ROLE IF EXISTS test;"
+        sudo -u postgres psql -c "REVOKE ALL ON SCHEMA public FROM PUBLIC;"
+        sudo -u postgres psql -c "GRANT ALL ON SCHEMA public TO postgres;"
+        sudo -u postgres psql -c "GRANT ALL ON SCHEMA public TO public;"

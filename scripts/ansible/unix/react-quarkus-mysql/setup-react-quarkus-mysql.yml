@@ -1,0 +1,86 @@
+---
+- name: Setup React, Java Quarkus, and MySQL on Unix/Linux
+  hosts: all
+  become: yes
+  vars:
+    node_version: "14.x"
+    mysql_user: "student"
+    mysql_password: "password"
+    mysql_database: "studentdb"
+  tasks:
+    - name: Update and upgrade APT packages
+      apt:
+        update_cache: yes
+        upgrade: yes
+
+    - name: Install Node.js
+      shell: curl -sL https://deb.nodesource.com/setup_{{ node_version }} | bash -
+      args:
+        creates: /usr/bin/node
+
+    - name: Install Node.js and npm
+      apt:
+        name: nodejs
+        state: present
+
+    - name: Install Create React App globally
+      npm:
+        name: create-react-app
+        global: yes
+        state: present
+
+    - name: Create React project
+      shell: npx create-react-app my-react-app
+      args:
+        chdir: /home/{{ ansible_user }}
+
+    - name: Install JDK
+      apt:
+        name: default-jdk
+        state: present
+
+    - name: Install Quarkus CLI
+      shell: |
+        curl -Ls https://sh.jbang.dev | bash -s - app install --fresh --name quarkus dev.quarkus:quarkus-cli:2.8.2.Final
+      args:
+        creates: /usr/local/bin/quarkus
+
+    - name: Install MySQL server
+      apt:
+        name: mysql-server
+        state: present
+
+    - name: Start MySQL service
+      service:
+        name: mysql
+        state: started
+        enabled: yes
+
+    - name: Create MySQL database
+      mysql_db:
+        name: "{{ mysql_database }}"
+        state: present
+
+    - name: Create MySQL user
+      mysql_user:
+        name: "{{ mysql_user }}"
+        password: "{{ mysql_password }}"
+        priv: "{{ mysql_database }}.*:ALL"
+        state: present
+
+    - name: Grant MySQL user permissions
+      mysql_user:
+        name: "{{ mysql_user }}"
+        host: "localhost"
+        priv: "*.*:ALL,GRANT"
+        state: present
+
+    - name: Secure MySQL installation
+      shell: |
+        mysql -u root <<-EOF
+        ALTER USER 'root'@'localhost' IDENTIFIED WITH 'mysql_native_password' BY 'root';
+        DELETE FROM mysql.user WHERE User='';
+        DROP DATABASE IF EXISTS test;
+        DELETE FROM mysql.db WHERE Db='test' OR Db='test\\_%';
+        FLUSH PRIVILEGES;
+        EOF

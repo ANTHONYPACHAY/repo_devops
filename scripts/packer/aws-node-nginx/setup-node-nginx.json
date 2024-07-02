@@ -1,0 +1,67 @@
+{
+  "variables": {
+    "aws_access_key": "{{env `AWS_ACCESS_KEY_USER`}}",
+    "aws_secret_key": "{{env `AWS_SECRET_KEY_USER`}}"
+  },
+  "builders": [
+    {
+      "type": "amazon-ebs",
+      "access_key": "{{user `aws_access_key`}}",
+      "secret_key": "{{user `aws_secret_key`}}",
+      "region": "us-east-1",
+      "source_ami": "ami-0bfb14e483c08be7d",
+      "instance_type": "t2.micro",
+      "ssh_username": "ubuntu",
+      "ami_name": "nodejs-nginx-amazon {{timestamp}}",
+      "subnet_id": "subnet-01b4f404016f8f807"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "file",
+      "source": "install.sh",
+      "destination": "/tmp/install.sh"
+    },
+    {
+      "type": "file",
+      "source": "index.js",
+      "destination": "/tmp/index.js"
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "chmod +x /tmp/install.sh",
+        "/tmp/install.sh"
+      ]
+    },
+    {
+      "type": "file",
+      "source": "nginx.conf",
+      "destination": "/tmp/nginx.conf"
+    },
+    {
+      "type": "file",
+      "source": "settings.sh",
+      "destination": "/tmp/settings.sh"
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "chmod +x /tmp/settings.sh",
+        "/tmp/settings.sh"
+      ]
+    },
+    {
+      "type": "file",
+      "source": "run.sh",
+      "destination": "/tmp/run.sh"
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "chmod +x /tmp/run.sh",
+        "/tmp/run.sh"
+      ]
+    }
+  ]
+}
