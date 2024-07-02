@@ -1,0 +1,40 @@
+# Vagrantfile para configurar una VM Ubuntu Desktop con Angular y PostgreSQL
+
+Vagrant.configure("2") do |config|
+    config.vm.box = "ubuntu/bionic64"
+  
+    config.vm.provider "virtualbox" do |vb|
+      vb.memory = "4096"
+      vb.cpus = 2
+    end
+  
+    config.vm.provision "shell", inline: <<-SHELL
+      # Actualizar paquetes
+      sudo apt-get update
+      
+      # Instalación de Node.js y npm
+      curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+      sudo apt-get install -y nodejs
+      
+      # Instalación de Angular CLI
+      sudo npm install -g @angular/cli
+      
+      # Crear proyecto Angular
+      if [ ! -d "/home/vagrant/my-angular-app" ]; then
+        sudo -u vagrant ng new my-angular-app --defaults
+      fi
+  
+      # Instalación de PostgreSQL
+      sudo apt-get install -y postgresql postgresql-contrib
+      
+      # Iniciar y habilitar PostgreSQL
+      sudo systemctl start postgresql
+      sudo systemctl enable postgresql
+      
+      # Configuración de PostgreSQL
+      sudo -u postgres psql -c "CREATE USER student WITH PASSWORD 'password';"
+      sudo -u postgres psql -c "CREATE DATABASE studentdb OWNER student;"
+      sudo -u postgres psql -c "ALTER USER student CREATEDB;"
+    SHELL
+  end
+  

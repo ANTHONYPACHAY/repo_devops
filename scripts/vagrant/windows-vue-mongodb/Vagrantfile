@@ -1,0 +1,42 @@
+# Vagrantfile para configurar una VM Windows con Vue.js y MongoDB
+
+Vagrant.configure("2") do |config|
+    config.vm.box = "gusztavvargadr/windows-10"
+    
+    config.vm.provider "virtualbox" do |vb|
+      vb.gui = true
+      vb.memory = "4096"
+      vb.cpus = 2
+    end
+  
+    config.vm.provision "shell", inline: <<-SHELL
+      # Asegurar que Chocolatey esté instalado
+      if (!(choco)) {
+        Set-ExecutionPolicy Bypass -Scope Process -Force;
+        [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;
+        iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'));
+      }
+  
+      # Instalación de Node.js
+      choco install -y nodejs-lts
+  
+      # Instalación de Vue CLI
+      npm install -g @vue/cli
+  
+      # Crear proyecto Vue
+      if (!(Test-Path -Path "C:\\Users\\vagrant\\my-vue-app")) {
+        vue create my-vue-app -d
+      }
+  
+      # Instalación de MongoDB
+      choco install -y mongodb
+  
+      # Iniciar servicio MongoDB
+      Start-Service MongoDB
+      Set-Service -Name MongoDB -StartupType Automatic
+  
+      # Crear usuario y base de datos en MongoDB
+      mongo mydb --eval "db.createUser({user: 'student', pwd: 'password', roles:[{role:'readWrite', db:'mydb'}]});"
+    SHELL
+  end
+  
