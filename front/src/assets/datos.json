@@ -1,0 +1,1113 @@
+{
+    "data": [
+        {
+            "tittle": "Configuración y Ejecución del Entorno COBOL y PostgreSQL en Unix/Linux con Ansible",
+            "description": "Este script proporciona una guía detallada para configurar y ejecutar un entorno con COBOL y PostgreSQL en sistemas Unix/Linux utilizando Ansible. El script automatiza la instalación y configuración de GnuCOBOL y PostgreSQL, asegurando que los servicios estén actualizados, seguros y listos para usar.",
+            "scriptType": "Automatización y Gestión de Configuración",
+            "Tecnologías": [
+                {
+                    "code": "COBOL (GnuCOBOL)",
+                    "description": "COBOL (GnuCOBOL)"
+                },
+                {
+                    "code": "PostgreSQL",
+                    "description": "PostgreSQL"
+                },
+                {
+                    "code": "ansible",
+                    "description": "ansible"
+                }
+            ],
+            "operativeSystem": "Unix/Linux",
+            "tool": "ansible",
+            "views": 0,
+            "downloads": 0,
+            "authors": [
+                {
+                    "firstName": "GEOVANNY JOSÉ",
+                    "lastName": "BRITO CASANOVA",
+                    "email": "geovanny.brito2017@ute.edu.ec",
+                    "profileImage": ""
+                }
+            ]
+        },
+        {
+            "tittle": "Configuración del Entorno de Desarrollo con React, Quarkus y MySQL en Unix/Linux usando Ansible",
+            "description": "Este playbook de Ansible automatiza la instalación y configuración de un entorno de desarrollo que incluye React en el frontend, Java Quarkus en el backend y MySQL como base de datos en sistemas Unix/Linux. Las tareas incluyen la instalación de Node.js, MySQL, JDK y Quarkus CLI, así como la creación de proyectos y usuarios necesarios.",
+            "scriptType": "Automatización y Gestión de Configuración",
+            "Tecnologías": [
+                {
+                    "code": "React",
+                    "description": "React"
+                },
+                {
+                    "code": "Java Quarkus",
+                    "description": "Java Quarkus"
+                },
+                {
+                    "code": "MySQL",
+                    "description": "MySQL"
+                },
+                {
+                    "code": "Node.js",
+                    "description": "Node.js"
+                },
+                {
+                    "code": "npm (Node Package Manager)",
+                    "description": "npm (Node Package Manager)"
+                },
+                {
+                    "code": "JDK (Java Development Kit)",
+                    "description": "JDK (Java Development Kit)"
+                },
+                {
+                    "code": "Quarkus CLI",
+                    "description": "Quarkus CLI"
+                },
+                {
+                    "code": "JBang",
+                    "description": "JBang"
+                },
+                {
+                    "code": "APT (Advanced Package Tool)",
+                    "description": "APT (Advanced Package Tool)"
+                },
+                {
+                    "code": "ansible",
+                    "description": "ansible"
+                }
+            ],
+            "operativeSystem": "Unix/Linux",
+            "tool": "ansible",
+            "views": 0,
+            "downloads": 0,
+            "authors": [
+                {
+                    "firstName": "GEOVANNY JOSÉ",
+                    "lastName": "BRITO CASANOVA",
+                    "email": "geovanny.brito2017@ute.edu.ec",
+                    "profileImage": ""
+                }
+            ]
+        },
+        {
+            "tittle": "Configuración del Entorno de Desarrollo con Angular, Spring y PostgreSQL en Windows usando Ansible",
+            "description": "Este playbook de Ansible automatiza la instalación y configuración de un entorno de desarrollo que incluye Angular en el frontend, Java Spring en el backend y PostgreSQL como base de datos en sistemas Windows. Las tareas incluyen la instalación de Node.js, Angular CLI, JDK, Spring Boot CLI y PostgreSQL, así como la creación de proyectos y usuarios necesarios.",
+            "scriptType": "Automatización y Gestión de Configuración",
+            "Tecnologías": [
+                {
+                    "code": "Angular",
+                    "description": "Angular"
+                },
+                {
+                    "code": "Java Spring",
+                    "description": "Java Spring"
+                },
+                {
+                    "code": "PostgreSQL",
+                    "description": "PostgreSQL"
+                },
+                {
+                    "code": "Node.js",
+                    "description": "Node.js"
+                },
+                {
+                    "code": "npm (Node Package Manager)",
+                    "description": "npm (Node Package Manager)"
+                },
+                {
+                    "code": "JDK (Java Development Kit)",
+                    "description": "JDK (Java Development Kit)"
+                },
+                {
+                    "code": "Spring Boot CLI",
+                    "description": "Spring Boot CLI"
+                },
+                {
+                    "code": "Chocolatey",
+                    "description": "Chocolatey"
+                },
+                {
+                    "code": "WinRM (Windows Remote Management)",
+                    "description": "WinRM (Windows Remote Management)"
+                },
+                {
+                    "code": "ansible",
+                    "description": "ansible"
+                }
+            ],
+            "operativeSystem": "Windows",
+            "tool": "ansible",
+            "views": 0,
+            "downloads": 0,
+            "authors": [
+                {
+                    "firstName": "GEOVANNY JOSÉ",
+                    "lastName": "BRITO CASANOVA",
+                    "email": "geovanny.brito2017@ute.edu.ec",
+                    "profileImage": ""
+                }
+            ]
+        },
+        {
+            "tittle": "Configuración del Entorno de Desarrollo con React, Java Quarkus y MySQL en Windows usando Ansible",
+            "description": "Este playbook de Ansible automatiza la instalación y configuración de un entorno de desarrollo que incluye React en el frontend, Java Quarkus en el backend y MySQL como base de datos en sistemas Windows. Las tareas incluyen la instalación de Node.js, MySQL, JDK y Quarkus CLI, así como la creación de proyectos y usuarios necesarios.",
+            "scriptType": "Automatización y Gestión de Configuración",
+            "Tecnologías": [
+                {
+                    "code": "React",
+                    "description": "React"
+                },
+                {
+                    "code": "Java Quarkus",
+                    "description": "Java Quarkus"
+                },
+                {
+                    "code": "MySQL",
+                    "description": "MySQL"
+                },
+                {
+                    "code": "Node.js",
+                    "description": "Node.js"
+                },
+                {
+                    "code": "npm (Node Package Manager)",
+                    "description": "npm (Node Package Manager)"
+                },
+                {
+                    "code": "JDK (Java Development Kit)",
+                    "description": "JDK (Java Development Kit)"
+                },
+                {
+                    "code": "Quarkus CLI",
+                    "description": "Quarkus CLI"
+                },
+                {
+                    "code": "Chocolatey",
+                    "description": "Chocolatey"
+                },
+                {
+                    "code": "WinRM (Windows Remote Management)",
+                    "description": "WinRM (Windows Remote Management)"
+                },
+                {
+                    "code": "ansible",
+                    "description": "ansible"
+                }
+            ],
+            "operativeSystem": "Windows",
+            "tool": "ansible",
+            "views": 0,
+            "downloads": 0,
+            "authors": [
+                {
+                    "firstName": "GEOVANNY JOSÉ",
+                    "lastName": "BRITO CASANOVA",
+                    "email": "geovanny.brito2017@ute.edu.ec",
+                    "profileImage": ""
+                }
+            ]
+        },
+        {
+            "tittle": "Configuración del Entorno de Desarrollo con Vue.js, Django y MongoDB en Windows usando Ansible",
+            "description": "Este playbook de Ansible automatiza la instalación y configuración de un entorno de desarrollo que incluye Vue.js en el frontend, Python Django en el backend y MongoDB como base de datos en sistemas Windows. Las tareas incluyen la instalación de Node.js, MongoDB, Python, Django y la creación de proyectos y usuarios necesarios.",
+            "scriptType": "Automatización y Gestión de Configuración",
+            "Tecnologías": [
+                {
+                    "code": "Vue.js",
+                    "description": "Vue.js"
+                },
+                {
+                    "code": "Django",
+                    "description": "Django"
+                },
+                {
+                    "code": "MongoDB",
+                    "description": "MongoDB"
+                },
+                {
+                    "code": "Node.js",
+                    "description": "Node.js"
+                },
+                {
+                    "code": "npm (Node Package Manager)",
+                    "description": "npm (Node Package Manager)"
+                },
+                {
+                    "code": "Python",
+                    "description": "Python"
+                },
+                {
+                    "code": "Chocolatey",
+                    "description": "Chocolatey"
+                },
+                {
+                    "code": "WinRM (Windows Remote Management)",
+                    "description": "WinRM (Windows Remote Management)"
+                },
+                {
+                    "code": "ansible",
+                    "description": "ansible"
+                }
+            ],
+            "operativeSystem": "Windows",
+            "tool": "ansible",
+            "views": 0,
+            "downloads": 0,
+            "authors": [
+                {
+                    "firstName": "GEOVANNY JOSÉ",
+                    "lastName": "BRITO CASANOVA",
+                    "email": "geovanny.brito2017@ute.edu.ec",
+                    "profileImage": ""
+                }
+            ]
+        },
+        {
+            "tittle": "Configuración del Entorno de Desarrollo con React, Node.js, Express y MongoDB en Unix/Linux usando Chef",
+            "description": "Esta receta de Chef automatiza la instalación y configuración de un entorno de desarrollo que incluye React en el frontend, Node.js con Express en el backend y MongoDB como base de datos en sistemas Unix/Linux. Las tareas incluyen la instalación de Node.js, MongoDB, la creación de un proyecto React y la configuración del entorno de desarrollo necesario.",
+            "scriptType": "Automatización y Gestión de Configuración",
+            "Tecnologías": [
+                {
+                    "code": "React",
+                    "description": "React"
+                },
+                {
+                    "code": "Node.js",
+                    "description": "Node.js"
+                },
+                {
+                    "code": "Express",
+                    "description": "Express"
+                },
+                {
+                    "code": "MongoDB",
+                    "description": "MongoDB"
+                },
+                {
+                    "code": "npm (Node Package Manager)",
+                    "description": "npm (Node Package Manager)"
+                },
+                {
+                    "code": "Nodemon",
+                    "description": "Nodemon"
+                },
+                {
+                    "code": "chef",
+                    "description": "chef"
+                }
+            ],
+            "operativeSystem": "Unix/Linux",
+            "tool": "chef",
+            "views": 0,
+            "downloads": 0,
+            "authors": [
+                {
+                    "firstName": "GEOVANNY JOSÉ",
+                    "lastName": "BRITO CASANOVA",
+                    "email": "geovanny.brito2017@ute.edu.ec",
+                    "profileImage": ""
+                }
+            ]
+        },
+        {
+            "tittle": "Configuración del Entorno de Desarrollo con Vue.js, PHP Laravel y MySQL en Windows usando Chef",
+            "description": "Esta receta de Chef automatiza la instalación y configuración de un entorno de desarrollo que incluye Vue.js en el frontend, PHP Laravel en el backend y MySQL como base de datos en sistemas Windows. Las tareas incluyen la instalación de Node.js, MySQL, PHP, Laravel, y la creación de proyectos y usuarios necesarios.",
+            "scriptType": "Automatización y Gestión de Configuración",
+            "Tecnologías": [
+                {
+                    "code": "Vue.js",
+                    "description": "Vue.js"
+                },
+                {
+                    "code": "PHP",
+                    "description": "PHP"
+                },
+                {
+                    "code": "Laravel",
+                    "description": "Laravel"
+                },
+                {
+                    "code": "MySQL",
+                    "description": "MySQL"
+                },
+                {
+                    "code": "Node.js",
+                    "description": "Node.js"
+                },
+                {
+                    "code": "npm (Node Package Manager)",
+                    "description": "npm (Node Package Manager)"
+                },
+                {
+                    "code": "Composer",
+                    "description": "Composer"
+                },
+                {
+                    "code": "Chocolatey",
+                    "description": "Chocolatey"
+                },
+                {
+                    "code": "chef",
+                    "description": "chef"
+                }
+            ],
+            "operativeSystem": "Windows",
+            "tool": "chef",
+            "views": 0,
+            "downloads": 0,
+            "authors": [
+                {
+                    "firstName": "GEOVANNY JOSÉ",
+                    "lastName": "BRITO CASANOVA",
+                    "email": "geovanny.brito2017@ute.edu.ec",
+                    "profileImage": ""
+                }
+            ]
+        },
+        {
+            "tittle": "Configuración y Ejecución de un Entorno Contenedorizado con Angular, Spring Boot y PostgreSQL usando Docker",
+            "description": "Esta guía proporciona instrucciones detalladas para configurar y ejecutar un entorno de desarrollo contenedorizado que incluye Angular en el frontend, Spring Boot en el backend y PostgreSQL como base de datos, utilizando Docker y Docker Compose.",
+            "scriptType": "Contenerización y Automatización de Tareas",
+            "Tecnologías": [
+                {
+                    "code": "Angular",
+                    "description": "Angular"
+                },
+                {
+                    "code": "Spring Boot",
+                    "description": "Spring Boot"
+                },
+                {
+                    "code": "PostgreSQL",
+                    "description": "PostgreSQL"
+                },
+                {
+                    "code": "Docker",
+                    "description": "Docker"
+                },
+                {
+                    "code": "Docker Compose",
+                    "description": "Docker Compose"
+                }
+            ],
+            "operativeSystem": "Cross-platform (funciona en Windows, macOS y Linux)",
+            "tool": "docker",
+            "views": 0,
+            "downloads": 0,
+            "authors": [
+                {
+                    "firstName": "GEOVANNY JOSÉ",
+                    "lastName": "BRITO CASANOVA",
+                    "email": "geovanny.brito2017@ute.edu.ec",
+                    "profileImage": ""
+                }
+            ]
+        },
+        {
+            "tittle": "Configuración y Ejecución de un Entorno Contenedorizado con React, .NET Core y SQL Server usando Docker",
+            "description": "Esta guía proporciona instrucciones detalladas para configurar y ejecutar un entorno de desarrollo contenedorizado que incluye React en el frontend, .NET Core en el backend y SQL Server como base de datos, utilizando Docker y Docker Compose.",
+            "scriptType": "Contenerización y Automatización de Tareas",
+            "Tecnologías": [
+                {
+                    "code": "React",
+                    "description": "React"
+                },
+                {
+                    "code": ".NET Core",
+                    "description": ".NET Core"
+                },
+                {
+                    "code": "SQL Server",
+                    "description": "SQL Server"
+                },
+                {
+                    "code": "Docker",
+                    "description": "Docker"
+                },
+                {
+                    "code": "Docker Compose",
+                    "description": "Docker Compose"
+                }
+            ],
+            "operativeSystem": "Cross-platform (funciona en Windows, macOS y Linux)",
+            "tool": "docker",
+            "views": 0,
+            "downloads": 0,
+            "authors": [
+                {
+                    "firstName": "GEOVANNY JOSÉ",
+                    "lastName": "BRITO CASANOVA",
+                    "email": "geovanny.brito2017@ute.edu.ec",
+                    "profileImage": ""
+                }
+            ]
+        },
+        {
+            "tittle": "Configuración y Creación de una Imagen Preconfigurada con Node.js y Nginx usando Packer",
+            "description": "Esta guía proporciona instrucciones detalladas para configurar y crear una imagen de máquina virtual preconfigurada que incluye un entorno de desarrollo con Node.js y Nginx, utilizando Packer. Esta imagen puede ser desplegada en AWS.",
+            "scriptType": "Gestión de Infraestructura y Entornos",
+            "Tecnologías": [
+                {
+                    "code": "Node.js",
+                    "description": "Node.js"
+                },
+                {
+                    "code": "Nginx",
+                    "description": "Nginx"
+                },
+                {
+                    "code": "Packer",
+                    "description": "Packer"
+                },
+                {
+                    "code": "AWS",
+                    "description": "AWS"
+                }
+            ],
+            "operativeSystem": "Ubuntu 18.04 (Base de la AMI)",
+            "tool": "packer",
+            "views": 0,
+            "downloads": 0,
+            "authors": [
+                {
+                    "firstName": "GEOVANNY JOSÉ",
+                    "lastName": "BRITO CASANOVA",
+                    "email": "geovanny.brito2017@ute.edu.ec",
+                    "profileImage": ""
+                }
+            ]
+        },
+        {
+            "tittle": "Configuración y Creación de una Imagen Preconfigurada con R y Plumber usando Packer",
+            "description": "Esta guía proporciona instrucciones detalladas para configurar y crear una imagen de máquina virtual preconfigurada que incluye un entorno de desarrollo con R y Plumber, utilizando Packer. Esta imagen puede ser desplegada en AWS.",
+            "scriptType": "Gestión de Infraestructura y Entornos",
+            "Tecnologías": [
+                {
+                    "code": "R",
+                    "description": "R"
+                },
+                {
+                    "code": "Plumber",
+                    "description": "Plumber"
+                },
+                {
+                    "code": "Packer",
+                    "description": "Packer"
+                },
+                {
+                    "code": "AWS",
+                    "description": "AWS"
+                }
+            ],
+            "operativeSystem": "Ubuntu 18.04 (Base de la AMI)",
+            "tool": "packer",
+            "views": 0,
+            "downloads": 0,
+            "authors": [
+                {
+                    "firstName": "GEOVANNY JOSÉ",
+                    "lastName": "BRITO CASANOVA",
+                    "email": "geovanny.brito2017@ute.edu.ec",
+                    "profileImage": ""
+                }
+            ]
+        },
+        {
+            "tittle": "Configuración y Ejecución de un Entorno de Desarrollo con Angular, .NET Core y SQL Server usando PowerShell",
+            "description": "Este script automatiza la instalación y configuración de un entorno de desarrollo que incluye Angular en el frontend, .NET Core en el backend y SQL Server como base de datos en un sistema Windows. Utiliza Chocolatey para la gestión de paquetes, asegurando una instalación sencilla y consistente de todas las dependencias necesarias.",
+            "scriptType": "Automatización y Gestión de Configuración",
+            "Tecnologías": [
+                {
+                    "code": "Angular",
+                    "description": "Angular"
+                },
+                {
+                    "code": ".NET Core",
+                    "description": ".NET Core"
+                },
+                {
+                    "code": "SQL Server",
+                    "description": "SQL Server"
+                },
+                {
+                    "code": "Chocolatey",
+                    "description": "Chocolatey"
+                },
+                {
+                    "code": "PowerShell",
+                    "description": "PowerShell"
+                }
+            ],
+            "operativeSystem": "Windows",
+            "tool": "powershell",
+            "views": 0,
+            "downloads": 0,
+            "authors": [
+                {
+                    "firstName": "GEOVANNY JOSÉ",
+                    "lastName": "BRITO CASANOVA",
+                    "email": "geovanny.brito2017@ute.edu.ec",
+                    "profileImage": ""
+                }
+            ]
+        },
+        {
+            "tittle": "Configuración y Ejecución de un Entorno con GnuCOBOL en Windows usando PowerShell",
+            "description": "Esta guía proporciona instrucciones detalladas para configurar y ejecutar un entorno de desarrollo con GnuCOBOL en Windows. El script automatiza la instalación de GnuCOBOL utilizando Chocolatey y crea un programa COBOL simple que muestra 'Hello, World!' en la consola.",
+            "scriptType": "Automatización y Gestión de Configuración",
+            "Tecnologías": [
+                {
+                    "code": "GnuCOBOL",
+                    "description": "GnuCOBOL"
+                },
+                {
+                    "code": "Chocolatey",
+                    "description": "Chocolatey"
+                },
+                {
+                    "code": "PowerShell",
+                    "description": "PowerShell"
+                }
+            ],
+            "operativeSystem": "Windows",
+            "tool": "powershell",
+            "views": 0,
+            "downloads": 0,
+            "authors": [
+                {
+                    "firstName": "GEOVANNY JOSÉ",
+                    "lastName": "BRITO CASANOVA",
+                    "email": "geovanny.brito2017@ute.edu.ec",
+                    "profileImage": ""
+                }
+            ]
+        },
+        {
+            "tittle": "Configuración y Ejecución de un Entorno con COBOL y SQLite en Windows usando PowerShell",
+            "description": "Esta guía proporciona instrucciones detalladas para configurar y ejecutar un entorno de desarrollo con COBOL y SQLite en Windows. El script automatiza la instalación de GnuCOBOL y SQLite utilizando Chocolatey, y crea una aplicación COBOL sencilla que inserta un registro en una base de datos SQLite.",
+            "scriptType": "Automatización y Gestión de Configuración",
+            "Tecnologías": [
+                {
+                    "code": "GnuCOBOL",
+                    "description": "GnuCOBOL"
+                },
+                {
+                    "code": "SQLite",
+                    "description": "SQLite"
+                },
+                {
+                    "code": "Chocolatey",
+                    "description": "Chocolatey"
+                },
+                {
+                    "code": "PowerShell",
+                    "description": "PowerShell"
+                }
+            ],
+            "operativeSystem": "Windows",
+            "tool": "powershell",
+            "views": 0,
+            "downloads": 0,
+            "authors": [
+                {
+                    "firstName": "GEOVANNY JOSÉ",
+                    "lastName": "BRITO CASANOVA",
+                    "email": "geovanny.brito2017@ute.edu.ec",
+                    "profileImage": ""
+                }
+            ]
+        },
+        {
+            "tittle": "Configuración y Ejecución de un Entorno con Golang y Gin en Windows usando PowerShell",
+            "description": "Esta guía proporciona instrucciones detalladas para configurar y ejecutar un entorno de desarrollo con Golang y el framework Gin en Windows. El script automatiza la instalación de Go utilizando Chocolatey y crea una aplicación sencilla que muestra 'Hello, World!'.",
+            "scriptType": "Automatización y Gestión de Configuración",
+            "Tecnologías": [
+                {
+                    "code": "Golang",
+                    "description": "Golang"
+                },
+                {
+                    "code": "Gin",
+                    "description": "Gin"
+                },
+                {
+                    "code": "Chocolatey",
+                    "description": "Chocolatey"
+                },
+                {
+                    "code": "PowerShell",
+                    "description": "PowerShell"
+                }
+            ],
+            "operativeSystem": "Windows",
+            "tool": "powershell",
+            "views": 0,
+            "downloads": 0,
+            "authors": [
+                {
+                    "firstName": "GEOVANNY JOSÉ",
+                    "lastName": "BRITO CASANOVA",
+                    "email": "geovanny.brito2017@ute.edu.ec",
+                    "profileImage": ""
+                }
+            ]
+        },
+        {
+            "tittle": "Configuración y Ejecución de un Entorno con Perl y Dancer en Windows usando PowerShell",
+            "description": "Esta guía proporciona instrucciones detalladas para configurar y ejecutar un entorno de desarrollo con Perl y el framework Dancer en Windows. El script automatiza la instalación de Strawberry Perl utilizando Chocolatey y crea una aplicación sencilla que muestra 'Hello, World!'.",
+            "scriptType": "Automatización y Gestión de Configuración",
+            "Tecnologías": [
+                {
+                    "code": "Perl",
+                    "description": "Perl"
+                },
+                {
+                    "code": "Dancer",
+                    "description": "Dancer"
+                },
+                {
+                    "code": "Chocolatey",
+                    "description": "Chocolatey"
+                },
+                {
+                    "code": "PowerShell",
+                    "description": "PowerShell"
+                }
+            ],
+            "operativeSystem": "Windows",
+            "tool": "powershell",
+            "views": 0,
+            "downloads": 0,
+            "authors": [
+                {
+                    "firstName": "GEOVANNY JOSÉ",
+                    "lastName": "BRITO CASANOVA",
+                    "email": "geovanny.brito2017@ute.edu.ec",
+                    "profileImage": ""
+                }
+            ]
+        },
+        {
+            "tittle": "Configuración y Ejecución de un Entorno de Desarrollo con React, Flask y PostgreSQL usando PowerShell",
+            "description": "Este script automatiza la instalación y configuración de un entorno de desarrollo con React en el frontend, Python Flask en el backend y PostgreSQL como base de datos en un sistema Windows.",
+            "scriptType": "Automatización y Gestión de Configuración",
+            "Tecnologías": [
+                {
+                    "code": "React",
+                    "description": "React"
+                },
+                {
+                    "code": "Flask",
+                    "description": "Flask"
+                },
+                {
+                    "code": "PostgreSQL",
+                    "description": "PostgreSQL"
+                },
+                {
+                    "code": "Chocolatey",
+                    "description": "Chocolatey"
+                },
+                {
+                    "code": "PowerShell",
+                    "description": "PowerShell"
+                }
+            ],
+            "operativeSystem": "Windows",
+            "tool": "powershell",
+            "views": 0,
+            "downloads": 0,
+            "authors": [
+                {
+                    "firstName": "GEOVANNY JOSÉ",
+                    "lastName": "BRITO CASANOVA",
+                    "email": "geovanny.brito2017@ute.edu.ec",
+                    "profileImage": ""
+                }
+            ]
+        },
+        {
+            "tittle": "Configuración y Ejecución de un Entorno con Rust y Rocket en Windows usando PowerShell",
+            "description": "Esta guía proporciona instrucciones detalladas para configurar y ejecutar un entorno de desarrollo con Rust y el framework Rocket en Windows. El script automatiza la instalación de Rust utilizando Chocolatey y crea una aplicación sencilla que muestra 'Hello, World!'.",
+            "scriptType": "Automatización y Gestión de Configuración",
+            "Tecnologías": [
+                {
+                    "code": "Rust",
+                    "description": "Rust"
+                },
+                {
+                    "code": "Rocket",
+                    "description": "Rocket"
+                },
+                {
+                    "code": "Chocolatey",
+                    "description": "Chocolatey"
+                },
+                {
+                    "code": "PowerShell",
+                    "description": "PowerShell"
+                }
+            ],
+            "operativeSystem": "Windows",
+            "tool": "powershell",
+            "views": 0,
+            "downloads": 0,
+            "authors": [
+                {
+                    "firstName": "GEOVANNY JOSÉ",
+                    "lastName": "BRITO CASANOVA",
+                    "email": "geovanny.brito2017@ute.edu.ec",
+                    "profileImage": ""
+                }
+            ]
+        },
+        {
+            "tittle": "Configuración y Ejecución de un Entorno con Ruby y Rails en Windows usando PowerShell",
+            "description": "Esta guía proporciona instrucciones detalladas para configurar y ejecutar un entorno de desarrollo con Ruby y el framework Rails en Windows. El script automatiza la instalación de Ruby utilizando Chocolatey y crea una aplicación simple de Rails que muestra una página de bienvenida.",
+            "scriptType": "Automatización y Gestión de Configuración",
+            "Tecnologías": [
+                {
+                    "code": "Ruby",
+                    "description": "Ruby"
+                },
+                {
+                    "code": "Rails",
+                    "description": "Rails"
+                },
+                {
+                    "code": "Chocolatey",
+                    "description": "Chocolatey"
+                },
+                {
+                    "code": "PowerShell",
+                    "description": "PowerShell"
+                }
+            ],
+            "operativeSystem": "Windows",
+            "tool": "powershell",
+            "views": 0,
+            "downloads": 0,
+            "authors": [
+                {
+                    "firstName": "GEOVANNY JOSÉ",
+                    "lastName": "BRITO CASANOVA",
+                    "email": "geovanny.brito2017@ute.edu.ec",
+                    "profileImage": ""
+                }
+            ]
+        },
+        {
+            "tittle": "Configuración y Ejecución de un Entorno de Desarrollo con Angular, Flask y PostgreSQL usando Puppet",
+            "description": "Este manifiesto de Puppet automatiza la instalación y configuración de un entorno de desarrollo con Angular en el Frontend, Python Flask en el Backend y PostgreSQL como Base de Datos en un sistema Unix/Linux.",
+            "scriptType": "Automatización y Gestión de Configuración",
+            "Tecnologías": [
+                {
+                    "code": "Angular",
+                    "description": "Angular"
+                },
+                {
+                    "code": "Flask",
+                    "description": "Flask"
+                },
+                {
+                    "code": "PostgreSQL",
+                    "description": "PostgreSQL"
+                },
+                {
+                    "code": "Puppet",
+                    "description": "Puppet"
+                }
+            ],
+            "operativeSystem": "Unix/Linux",
+            "tool": "puppet",
+            "views": 0,
+            "downloads": 0,
+            "authors": [
+                {
+                    "firstName": "GEOVANNY JOSÉ",
+                    "lastName": "BRITO CASANOVA",
+                    "email": "geovanny.brito2017@ute.edu.ec",
+                    "profileImage": ""
+                }
+            ]
+        },
+        {
+            "tittle": "Configuración y Ejecución de un Entorno de Desarrollo con React, Rails y MySQL en Windows usando Puppet",
+            "description": "Este manifiesto de Puppet automatiza la instalación y configuración de un entorno de desarrollo con React en el Frontend, Ruby on Rails en el Backend y MySQL como Base de Datos en un sistema Windows.",
+            "scriptType": "Automatización y Gestión de Configuración",
+            "Tecnologías": [
+                {
+                    "code": "React",
+                    "description": "React"
+                },
+                {
+                    "code": "Ruby on Rails",
+                    "description": "Ruby on Rails"
+                },
+                {
+                    "code": "MySQL",
+                    "description": "MySQL"
+                },
+                {
+                    "code": "Chocolatey",
+                    "description": "Chocolatey"
+                },
+                {
+                    "code": "Puppet",
+                    "description": "Puppet"
+                }
+            ],
+            "operativeSystem": "Windows",
+            "tool": "puppet",
+            "views": 0,
+            "downloads": 0,
+            "authors": [
+                {
+                    "firstName": "GEOVANNY JOSÉ",
+                    "lastName": "BRITO CASANOVA",
+                    "email": "geovanny.brito2017@ute.edu.ec",
+                    "profileImage": ""
+                }
+            ]
+        },
+        {
+            "tittle": "Configuración y Ejecución de un Entorno de Desarrollo con React, Node.js y PostgreSQL en Unix/Linux usando Bash",
+            "description": "Este script automatiza la instalación y configuración de un entorno de desarrollo con React en el Frontend, Node.js en el Backend y PostgreSQL como Base de Datos en un sistema Unix/Linux.",
+            "scriptType": "Automatización y Gestión de Configuración",
+            "Tecnologías": [
+                {
+                    "code": "React",
+                    "description": "React"
+                },
+                {
+                    "code": "Node.js",
+                    "description": "Node.js"
+                },
+                {
+                    "code": "PostgreSQL",
+                    "description": "PostgreSQL"
+                },
+                {
+                    "code": "Bash",
+                    "description": "Bash"
+                }
+            ],
+            "operativeSystem": "Unix/Linux",
+            "tool": "shell",
+            "views": 0,
+            "downloads": 0,
+            "authors": [
+                {
+                    "firstName": "GEOVANNY JOSÉ",
+                    "lastName": "BRITO CASANOVA",
+                    "email": "geovanny.brito2017@ute.edu.ec",
+                    "profileImage": ""
+                }
+            ]
+        },
+        {
+            "tittle": "Configuración y Ejecución de un Entorno de Desarrollo con Vue.js, PHP y MySQL en Unix/Linux usando Bash",
+            "description": "Este script automatiza la instalación y configuración de un entorno de desarrollo con Vue.js en el Frontend, PHP en el Backend y MySQL como Base de Datos en un sistema Unix/Linux.",
+            "scriptType": "Automatización y Gestión de Configuración",
+            "Tecnologías": [
+                {
+                    "code": "Vue.js",
+                    "description": "Vue.js"
+                },
+                {
+                    "code": "PHP",
+                    "description": "PHP"
+                },
+                {
+                    "code": "MySQL",
+                    "description": "MySQL"
+                },
+                {
+                    "code": "Bash",
+                    "description": "Bash"
+                }
+            ],
+            "operativeSystem": "Unix/Linux",
+            "tool": "shell",
+            "views": 0,
+            "downloads": 0,
+            "authors": [
+                {
+                    "firstName": "GEOVANNY JOSÉ",
+                    "lastName": "BRITO CASANOVA",
+                    "email": "geovanny.brito2017@ute.edu.ec",
+                    "profileImage": ""
+                }
+            ]
+        },
+        {
+            "tittle": "Configuración de Infraestructura en AWS con Node.js, Express, Nginx y MongoDB usando Terraform",
+            "description": "Este archivo de configuración de Terraform crea una infraestructura en AWS que incluye una instancia EC2 con Node.js, Express, Nginx y MongoDB instalados y configurados.",
+            "scriptType": "Gestión de Infraestructura y Entornos",
+            "Tecnologías": [
+                {
+                    "code": "Node.js",
+                    "description": "Node.js"
+                },
+                {
+                    "code": "Express",
+                    "description": "Express"
+                },
+                {
+                    "code": "Nginx",
+                    "description": "Nginx"
+                },
+                {
+                    "code": "MongoDB",
+                    "description": "MongoDB"
+                },
+                {
+                    "code": "Terraform",
+                    "description": "Terraform"
+                },
+                {
+                    "code": "AWS",
+                    "description": "AWS"
+                }
+            ],
+            "operativeSystem": "Unix/Linux",
+            "tool": "terraform",
+            "views": 0,
+            "downloads": 0,
+            "authors": [
+                {
+                    "firstName": "GEOVANNY JOSÉ",
+                    "lastName": "BRITO CASANOVA",
+                    "email": "geovanny.brito2017@ute.edu.ec",
+                    "profileImage": ""
+                }
+            ]
+        },
+        {
+            "tittle": "Configuración de Infraestructura en AWS con Python y MariaDB usando Terraform",
+            "description": "Este archivo de configuración de Terraform crea una infraestructura en AWS que incluye una instancia EC2 con Python y MariaDB instalados y configurados.",
+            "scriptType": "Gestión de Infraestructura y Entornos",
+            "Tecnologías": [
+                {
+                    "code": "Python",
+                    "description": "Python"
+                },
+                {
+                    "code": "MariaDB",
+                    "description": "MariaDB"
+                },
+                {
+                    "code": "Terraform",
+                    "description": "Terraform"
+                },
+                {
+                    "code": "AWS",
+                    "description": "AWS"
+                }
+            ],
+            "operativeSystem": "Unix/Linux",
+            "tool": "terraform",
+            "views": 0,
+            "downloads": 0,
+            "authors": [
+                {
+                    "firstName": "GEOVANNY JOSÉ",
+                    "lastName": "BRITO CASANOVA",
+                    "email": "geovanny.brito2017@ute.edu.ec",
+                    "profileImage": ""
+                }
+            ]
+        },
+        {
+            "tittle": "Configuración de Entorno con Ubuntu Desktop, Angular y PostgreSQL usando Vagrant",
+            "description": "Este archivo de configuración de Vagrant automatiza la creación y configuración de una máquina virtual que ejecuta Ubuntu Desktop, con Angular para el desarrollo frontend y PostgreSQL como base de datos. El script instala todas las dependencias necesarias y crea un proyecto Angular predeterminado, asegurando un entorno de desarrollo listo para usar.",
+            "scriptType": "Gestión de Infraestructura y Entornos",
+            "Tecnologías": [
+                {
+                    "code": "Vagrant",
+                    "description": "Vagrant"
+                },
+                {
+                    "code": "VirtualBox",
+                    "description": "VirtualBox"
+                },
+                {
+                    "code": "Node.js",
+                    "description": "Node.js"
+                },
+                {
+                    "code": "npm",
+                    "description": "npm"
+                },
+                {
+                    "code": "Angular CLI",
+                    "description": "Angular CLI"
+                },
+                {
+                    "code": "PostgreSQL",
+                    "description": "PostgreSQL"
+                }
+            ],
+            "operativeSystem": "Ubuntu Desktop (18.04)",
+            "tool": "vagrant",
+            "views": 0,
+            "downloads": 0,
+            "authors": [
+                {
+                    "firstName": "GEOVANNY JOSÉ",
+                    "lastName": "BRITO CASANOVA",
+                    "email": "geovanny.brito2017@ute.edu.ec",
+                    "profileImage": ""
+                }
+            ]
+        },
+        {
+            "tittle": "Configuración de Entorno con Windows, Vue.js y MongoDB usando Vagrant",
+            "description": "Este archivo de configuración de Vagrant automatiza la creación y configuración de una máquina virtual con Windows 10 Enterprise, Vue.js para el desarrollo frontend y MongoDB como base de datos. El script instala todas las dependencias necesarias y crea un proyecto Vue predeterminado, asegurando un entorno de desarrollo listo para usar.",
+            "scriptType": "Gestión de Infraestructura y Entornos",
+            "Tecnologías": [
+                {
+                    "code": "Vagrant",
+                    "description": "Vagrant"
+                },
+                {
+                    "code": "VirtualBox",
+                    "description": "VirtualBox"
+                },
+                {
+                    "code": "Node.js",
+                    "description": "Node.js"
+                },
+                {
+                    "code": "npm",
+                    "description": "npm"
+                },
+                {
+                    "code": "Vue CLI",
+                    "description": "Vue CLI"
+                },
+                {
+                    "code": "MongoDB",
+                    "description": "MongoDB"
+                },
+                {
+                    "code": "Chocolatey",
+                    "description": "Chocolatey"
+                }
+            ],
+            "operativeSystem": "Windows 10 Enterprise",
+            "tool": "vagrant",
+            "views": 0,
+            "downloads": 0,
+            "authors": [
+                {
+                    "firstName": "GEOVANNY JOSÉ",
+                    "lastName": "BRITO CASANOVA",
+                    "email": "geovanny.brito2017@ute.edu.ec",
+                    "profileImage": ""
+                }
+            ]
+        }
+    ]
+}
