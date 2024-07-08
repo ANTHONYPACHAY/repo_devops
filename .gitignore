@@ -5,3 +5,5 @@
 
 /back/target/
 front/package-lock.json
+front/.firebaserc
+front/.firebase/hosting.ZGlzdA.cache
