@@ -4,12 +4,13 @@ import { Auth, Unsubscribe, onAuthStateChanged, getAuth, createUserWithEmailAndP
 // import { getDatabase, ref, get, DataSnapshot, set, push, update, remove } from 'firebase/database';
 import { getFirestore, getDocs, getDoc, collection, doc, addDoc, updateDoc, deleteDoc, query, where, orderBy, WhereFilterOp } from 'firebase/firestore';
 import { getStorage, ref as storageRef, uploadBytes, getDownloadURL } from 'firebase/storage';
-import { Observable } from 'rxjs';
+import {finalize, forkJoin, Observable, switchMap} from 'rxjs';
 import firebase from "firebase/compat";
 import ThenableReference = firebase.database.ThenableReference;
 import {environment} from "../../environments/environment";
 import QuerySnapshot = firebase.firestore.QuerySnapshot;
 import DocumentSnapshot = firebase.firestore.DocumentSnapshot;
+import {FileData} from "../interface/models";
 // import WhereFilterOp = firebase.firestore.WhereFilterOp;
 
 // import { getFirestore, doc, getDoc } from 'firebase/firestore/lite';
@@ -116,5 +117,39 @@ export class ManagerFirebase {
         const stref = storageRef(this.storage, `/${folderName}/${file.name}`);
         await uploadBytes(stref, file);
         return await getDownloadURL(stref);
+    }
+
+    uploadFiles(folderId: string, files: FileList): void {
+        Array.from(files).forEach(file => {
+            const filePath = `${folderId}/${file.name}`;
+            const fileRef = this.storage.ref(filePath);
+            const task = this.storage.upload(filePath, file);
+
+            task.snapshotChanges().pipe(
+                finalize(() => {
+                    fileRef.getDownloadURL().subscribe(url => {
+                        console.log('File available at', url);
+                    });
+                })
+            ).subscribe();
+        });
+    }
+    getFilesInFolder(folderId: string): Observable<FileData[]> {
+        const folderRef = this.storage.ref(folderId);
+        return folderRef.listAll().pipe(
+            switchMap((result: any[]) => {
+                const fileDataObservables = result['items'].map(fileRef =>
+                    fileRef.getMetadata().then(metadata => ({
+                        name: fileRef.name,
+                        url: fileRef.getDownloadURL(),
+                        contentType: metadata.contentType,
+                        size: metadata.size,
+                        timeCreated: metadata.timeCreated,
+                        updated: metadata.updated
+                    }))
+                );
+                return forkJoin(fileDataObservables);
+            })
+        );
     }
 }

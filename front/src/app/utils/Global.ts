@@ -162,7 +162,7 @@ export class Global {
     }
 
     public static filtrar(items: any[], skey: string, condition: any): any[] {
-        return items.map((item: any) => item[skey] === condition);
+        return items.filter((item: any) => item[skey] === condition);
     }
 
     public static tiempoEnTexto(segundos: number) {
@@ -186,12 +186,22 @@ export class Global {
         return resultado;
     }
 
-    public static calcularRacha(ultimaPractica: Date, dias: number) {
-        let rachaDeAprendizaje = 0;
-        const ultima = Global.fechaAyerUHoy(ultimaPractica);
-        if ([1, 2].indexOf(ultima) > -1) {
-            rachaDeAprendizaje = (Global.esNumero(String(dias))) ? dias : 0;
+    public static searchItemsInArray2Params(itemList: any[], skey1: string, skey2: string, find: any) {
+        const resp: any[] = [];
+        for (const itemElement of itemList) {
+            if (itemElement[skey1][skey2] === find) {
+                resp.push(itemElement) ;
+            }
         }
-        return [ultima, rachaDeAprendizaje];
+        return resp;
+    }
+    public static searchItemsInArray3Params(itemList: any[], skey1: string, skey2: string, skey3: string, find: any) {
+        const resp: any[] = [];
+        for (const itemElement of itemList) {
+            if (itemElement[skey1][skey2][skey3] === find) {
+                resp.push(itemElement) ;
+            }
+        }
+        return resp;
     }
 }

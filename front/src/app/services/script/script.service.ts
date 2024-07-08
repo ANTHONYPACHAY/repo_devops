@@ -1,0 +1,95 @@
+import {Injectable} from '@angular/core';
+import {ManagerFirebase} from "../../utils/manager-firebase";
+import {Observable} from "rxjs";
+import {HttpClient} from "@angular/common/http";
+import {FirebaseInterfaces} from "../../interface/enums";
+import {Author, BasicEntity, Script} from "../../interface/models";
+import {Global} from "../../utils/Global";
+
+@Injectable({
+    providedIn: 'root'
+})
+export class ScriptService {
+
+    private scriptTypeList: BasicEntity[] = [];
+    private operativeSystemList: BasicEntity[] = [];
+    private toolList: BasicEntity[] = [];
+    private tecnologiasList: BasicEntity[] = [];
+    private authorsList: Author[] = [];
+    public initialized: boolean = false;
+    constructor(private http: HttpClient, private fb: ManagerFirebase) {
+    }
+
+    getJsonData(): Observable<any> {
+        return this.http.get<any>('assets/datos.json');
+    }
+
+    public setPropesties(scriptTypeList: BasicEntity[],
+                  operativeSystemList: BasicEntity[],
+                  toolList: BasicEntity[],
+                  tecnologiasList: BasicEntity[],
+                  authorsList: Author[]) {
+        this.scriptTypeList = scriptTypeList;
+        this.operativeSystemList = operativeSystemList;
+        this.toolList = toolList;
+        this.tecnologiasList = tecnologiasList;
+        this.authorsList = authorsList;
+        this.initialized = true;
+    }
+
+    async getById(id: string) {
+        const item = await this.fb.getRecord(FirebaseInterfaces.SCRIPTS, id);
+        return item as Script;
+    }
+
+    async getList() {
+        const itemList = await this.fb.getRecordsOrderBy(FirebaseInterfaces.SCRIPTS,  "tittle", 1);
+        return itemList as Script[];
+    }
+
+    async getListTurbo(sortParam: string, sortType: number) {
+        const itemList: Script[] = await this.fb.getRecordsOrderBy(FirebaseInterfaces.SCRIPTS,  sortParam, sortType) as Script[];
+        for (const script of itemList) {
+
+            let findItemScriptType = Global.filtrar(this.scriptTypeList, 'id', script.scriptType.id);
+            if (findItemScriptType.length > 0) {
+                script.scriptType.entity = findItemScriptType[0];
+            }
+
+            let findItemOperativeSystem = Global.filtrar(this.operativeSystemList, 'id', script.operativeSystem.id);
+            if (findItemOperativeSystem.length > 0) {
+                script.operativeSystem.entity = findItemOperativeSystem[0];
+            }
+
+            for (let ind = 0; ind < script.tecnology.length; ind++) {
+                let findItemTecnologias = Global.filtrar(this.tecnologiasList, 'id', script.tecnology[ind].id);
+                if (findItemTecnologias.length > 0) {
+                    script.tecnology[ind].entity =  findItemTecnologias[0];
+                }
+            }
+
+            let findItemTool = Global.filtrar(this.toolList, 'id', script.tool.id);
+            if (findItemTool.length > 0) {
+                script.tool.entity = findItemTool[0];
+            }
+
+            for (let ind = 0; ind < script.authors.length; ind++) {
+                let findItemAutor = Global.filtrar(this.authorsList, 'id', script.authors[ind].id);
+                if (findItemAutor.length > 0) {
+                    script.authors[ind].entity =  findItemAutor[0];
+                }
+            }
+        }
+        return itemList;
+    }
+
+    async persist(item: any, id: string = "") {
+        if (id !== "") {
+            const saved = await this.fb.updateRecord(FirebaseInterfaces.SCRIPTS, id, item);
+        } else {
+            const saved = await this.fb.saveRecord(FirebaseInterfaces.SCRIPTS, item);
+        }
+    }
+
+
+}
