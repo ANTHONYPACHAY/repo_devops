@@ -5,6 +5,8 @@ import { AppLayoutComponent } from "./layout/app.layout.component";
 import {AboutComponent} from "./views/about/about.component";
 import {DonateComponent} from "./views/donate/donate.component";
 import {ContactComponent} from "./views/contact/contact.component";
+import {CreateAlgorithmComponent} from "./views/create-algorithm/create-algorithm.component";
+import {ViewAlgorithmComponent} from "./views/view-algorithm/view-algorithm.component";
 
 @NgModule({
     imports: [
@@ -15,6 +17,9 @@ import {ContactComponent} from "./views/contact/contact.component";
                     { path: 'about', component: AboutComponent },
                     { path: 'donate', component: DonateComponent },
                     { path: 'contact', component: ContactComponent },
+                    { path: 'create-algorithm', component: CreateAlgorithmComponent },
+                    { path: 'create-algorithm/:id', component: CreateAlgorithmComponent },
+                    { path: 'view-algorithm/:id', component: ViewAlgorithmComponent },
 
                     { path: '', loadChildren: () => import('./demo/components/dashboard/dashboard.module').then(m => m.DashboardModule) },
                     { path: 'uikit', loadChildren: () => import('./demo/components/uikit/uikit.module').then(m => m.UIkitModule) },

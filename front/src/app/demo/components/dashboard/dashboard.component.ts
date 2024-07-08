@@ -126,7 +126,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     }
 
     gotoView(item: Script) {
-        this.router.navigate(['view', item.id]);
+        this.router.navigate(['view-algorithm', item.id]);
     }
 
     generateData() {

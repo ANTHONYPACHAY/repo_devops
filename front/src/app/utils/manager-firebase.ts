@@ -3,14 +3,15 @@ import { initializeApp } from 'firebase/app';
 import { Auth, Unsubscribe, onAuthStateChanged, getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail, signOut } from 'firebase/auth';
 // import { getDatabase, ref, get, DataSnapshot, set, push, update, remove } from 'firebase/database';
 import { getFirestore, getDocs, getDoc, collection, doc, addDoc, updateDoc, deleteDoc, query, where, orderBy, WhereFilterOp } from 'firebase/firestore';
-import { getStorage, ref as storageRef, uploadBytes, getDownloadURL } from 'firebase/storage';
-import {finalize, forkJoin, Observable, switchMap} from 'rxjs';
+import { getStorage, ref as storageRef, uploadBytes, getDownloadURL, listAll, getMetadata } from 'firebase/storage';
+import {finalize, forkJoin, from, Observable, switchMap} from 'rxjs';
 import firebase from "firebase/compat";
 import ThenableReference = firebase.database.ThenableReference;
 import {environment} from "../../environments/environment";
 import QuerySnapshot = firebase.firestore.QuerySnapshot;
 import DocumentSnapshot = firebase.firestore.DocumentSnapshot;
 import {FileData} from "../interface/models";
+import {map} from "rxjs/operators";
 // import WhereFilterOp = firebase.firestore.WhereFilterOp;
 
 // import { getFirestore, doc, getDoc } from 'firebase/firestore/lite';
@@ -119,34 +120,39 @@ export class ManagerFirebase {
         return await getDownloadURL(stref);
     }
 
-    uploadFiles(folderId: string, files: FileList): void {
-        Array.from(files).forEach(file => {
+    async uploadFiles(folderId: string, files: File[]): Promise<void> {
+        for (const file of files) {
             const filePath = `${folderId}/${file.name}`;
-            const fileRef = this.storage.ref(filePath);
-            const task = this.storage.upload(filePath, file);
-
-            task.snapshotChanges().pipe(
-                finalize(() => {
-                    fileRef.getDownloadURL().subscribe(url => {
-                        console.log('File available at', url);
-                    });
-                })
-            ).subscribe();
-        });
+            const stref = storageRef(this.storage, filePath);
+            try {
+                await uploadBytes(stref, file);
+                const url = await getDownloadURL(stref);
+                console.log('File available at', url);
+            } catch (error) {
+                console.error('Error uploading file:', file.name, error);
+            }
+        }
     }
     getFilesInFolder(folderId: string): Observable<FileData[]> {
-        const folderRef = this.storage.ref(folderId);
-        return folderRef.listAll().pipe(
-            switchMap((result: any[]) => {
-                const fileDataObservables = result['items'].map(fileRef =>
-                    fileRef.getMetadata().then(metadata => ({
-                        name: fileRef.name,
-                        url: fileRef.getDownloadURL(),
-                        contentType: metadata.contentType,
-                        size: metadata.size,
-                        timeCreated: metadata.timeCreated,
-                        updated: metadata.updated
-                    }))
+        const folderRef = storageRef(this.storage, folderId);
+
+        return from(listAll(folderRef)).pipe(
+            switchMap(result => {
+                const fileDataObservables = result.items.map(fileRef =>
+                    from(getMetadata(fileRef)).pipe(
+                        switchMap(metadata =>
+                            from(getDownloadURL(fileRef)).pipe(
+                                map(url => ({
+                                    name: fileRef.name,
+                                    url,
+                                    contentType: metadata.contentType,
+                                    size: metadata.size,
+                                    timeCreated: metadata.timeCreated,
+                                    updated: metadata.updated
+                                }))
+                            )
+                        )
+                    )
                 );
                 return forkJoin(fileDataObservables);
             })

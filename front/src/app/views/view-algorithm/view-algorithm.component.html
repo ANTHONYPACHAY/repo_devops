@@ -1,0 +1,123 @@
+<div class="col-12 pr-8 pl-8 sm:pl-0 sm:pr-0 md:pl-8 md:pr-8 lg:pl-8 lg:pr-8 xl:pl-8 xl:pr-8  ">
+    <p-panel header="Gestionar Scripts">
+
+        <div class="p-fluid p-formgrid p-grid formgrid grid mb-n2">
+            <div class="p-field field col-12 sm:col-12 md:col-12 lg:col-12 xl:col-12">
+                <label class="mb-2"><b>Título:</b></label>
+                <p><b>{{scriptsItem.tittle}}</b></p>
+            </div>
+
+            <div class="p-field field col-12 sm:col-12 md:col-12 lg:col-12 xl:col-12">
+                <label  class="mr-2 "><b>Descripción:</b></label>
+                <p>{{scriptsItem.description}}</p>
+            </div>
+
+
+            <div class="p-field field col-12 sm:col-12 md:col-6 lg:col-6 xl:col-6">
+                <label class="mr-2 "><b>Tipo de Script:</b></label>
+                <p>{{scriptsItem.scriptType.entity.description}}</p>
+            </div>
+
+            <div class="p-field field col-12 sm:col-12 md:col-6 lg:col-6 xl:col-6">
+                <label  class="mr-2 "><b>Sistema Operativo:</b></label>
+                <p>{{scriptsItem.operativeSystem.entity.description}}</p>
+            </div>
+            <div class="p-field field col-12 sm:col-12 md:col-6 lg:col-6 xl:col-6">
+                <label class="mr-2 "><b>Herramienta de Automatización:</b></label>
+<!--                <p>{{scriptsItem.tool.entity.description}}</p>-->
+                <p-tag severity="info" [value]="scriptsItem.tool.entity.description" ></p-tag>
+            </div>
+
+            <!--            <div class="col-sm-12 col-md-12 col-xl-12 p-field" *ngIf="tipoVista === tipeEmul.VIDEO">-->
+            <!--                <label for="url" class="mb-2">Enlace del video:</label>-->
+            <!--                <input type="text" pInputText id="url" class="mb-2" [(ngModel)]="selectedItem.recurso_url" required/>-->
+            <!--            </div>-->
+            <div class="p-field field col-12 sm:col-12 md:col-6 lg:col-6 xl:col-6">
+                <label  class="mr-2 "><b>Tecnologías:</b></label>
+                <p-table #dt [value]="scriptsItem.tecnology" [paginator]="false" styleClass="p-datatable-sm mt-2"
+                         [rowHover]="true" dataKey="id" sortField="description" sortMode="single"
+                         currentPageReportTemplate="mostrando {first} a {last} de {totalRecords} registros"
+                         [showCurrentPageReport]="true" >
+                    <!--    <ng-template pTemplate="caption">-->
+                    <!--      -->
+                    <!--    </ng-template>-->1
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th style="width: 3rem">
+                            </th>
+                            <th>Tecnología</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-item  let-rowIndex="rowIndex">
+                        <tr>
+                            <td >
+                                {{rowIndex + 1}}
+                            </td>
+                            <td>{{ item.entity.description }}</td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+            <div class="p-field field col-12 sm:col-12 md:col-6 lg:col-6 xl:col-6">
+                <label  class="mr-2 "><b>Autores:</b></label>
+                <p-table #dt [value]="scriptsItem.authors" [paginator]="false" styleClass="p-datatable-sm mt-2"
+                         [rowHover]="true" dataKey="id" sortField="description" sortMode="single"
+                         currentPageReportTemplate="mostrando {first} a {last} de {totalRecords} registros"
+                         [showCurrentPageReport]="true"  >
+                    <!--    <ng-template pTemplate="caption">-->
+                    <!--      -->
+                    <!--    </ng-template>-->
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th style="width: 3rem"> </th>
+                            <th>Nombres</th>
+                            <th>Email</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-item  let-rowIndex="rowIndex">
+                        <tr>
+                            <td><p-avatar [label]="item?.entity?.firstName[0] ??'U'" size="large"></p-avatar></td>
+                            <td>{{ item?.entity?.firstName + ' ' + item?.entity?.lastName }}</td>
+                            <td>{{ item?.entity?.email }}</td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+
+            <div class="p-field field col-12 sm:col-12 md:col-6 lg:col-6 xl:col-6">
+                <label  class="mr-2 "><b>Archivos:</b></label>
+                <p-table #dt [value]="scriptsItem.fileData" [paginator]="false" styleClass="p-datatable-sm mt-2"
+                         [rowHover]="true" dataKey="name" sortField="name" sortMode="single"
+                         currentPageReportTemplate="mostrando {first} a {last} de {totalRecords} registros"
+                         [showCurrentPageReport]="true"  >
+                    <!--    <ng-template pTemplate="caption">-->
+                    <!--      -->
+                    <!--    </ng-template>-->
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th style="width: 3rem"> # </th>
+                            <th>Nombre de Archivo</th>
+                            <th>Acción</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-item  let-rowIndex="rowIndex">
+                        <tr>
+                            <td>{{rowIndex + 1}}</td>
+                            <td>{{ item?.name }}</td>
+                            <td>
+<!--                                <a [href]="item.url" [download]="item.name" target="_blank" > <i class="pi pi-download" ></i></a>-->
+                                <a [href]="item.url" download>
+                                    <button pButton type="button" label="Download" icon="pi pi-download"></button>
+                                </a>
+                            </td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+
+
+        </div>
+    </p-panel>
+</div>
+
+

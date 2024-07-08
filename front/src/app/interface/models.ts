@@ -72,6 +72,7 @@ export interface Script {
     downloads: number;
     valid: boolean;
     date_register: any;
+    fileData?: FileData[];
 }
 
 export interface ViewsDownloads {
