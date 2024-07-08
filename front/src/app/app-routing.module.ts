@@ -7,6 +7,7 @@ import {DonateComponent} from "./views/donate/donate.component";
 import {ContactComponent} from "./views/contact/contact.component";
 import {CreateAlgorithmComponent} from "./views/create-algorithm/create-algorithm.component";
 import {ViewAlgorithmComponent} from "./views/view-algorithm/view-algorithm.component";
+import {ListAlgorithmComponent} from "./views/list-algorithm/list-algorithm.component";
 
 @NgModule({
     imports: [
@@ -20,6 +21,7 @@ import {ViewAlgorithmComponent} from "./views/view-algorithm/view-algorithm.comp
                     { path: 'create-algorithm', component: CreateAlgorithmComponent },
                     { path: 'create-algorithm/:id', component: CreateAlgorithmComponent },
                     { path: 'view-algorithm/:id', component: ViewAlgorithmComponent },
+                    { path: 'list-algorithm', component: ListAlgorithmComponent },
 
                     { path: '', loadChildren: () => import('./demo/components/dashboard/dashboard.module').then(m => m.DashboardModule) },
                     { path: 'uikit', loadChildren: () => import('./demo/components/uikit/uikit.module').then(m => m.UIkitModule) },
