@@ -17,6 +17,10 @@ import {Router} from "@angular/router";
 
 @Component({
     templateUrl: './dashboard.component.html',
+    styles: '.small-button {\n' +
+        '  font-size: 10px;  /* Ajusta el tamaño del texto */\n' +
+        '  padding: 2px 5px; /* Ajusta el relleno del botón */\n' +
+        '}'
 })
 export class DashboardComponent implements OnInit, OnDestroy {
 
@@ -109,9 +113,11 @@ export class DashboardComponent implements OnInit, OnDestroy {
         this.scriptsList = resp.slice(0, 5);
 
         for (let ind = 0; ind < this.counterList.length; ind++) {
-            this.counterList[ind].quantity = Global.searchItemsInArray3Params(resp,
+            const listitems = Global.searchItemsInArray3Params(resp,
                 'scriptType', 'entity', 'description',
-                this.counterList[ind].detail).length;
+                this.counterList[ind].detail);
+            this.counterList[ind].quantity = listitems.length;
+            this.counterList[ind].id = listitems[0].scriptType.id;
         }
 
         const listColors = ['orange', 'cyan', 'pink', 'green', 'purple', 'teal'];
@@ -386,5 +392,11 @@ export class DashboardComponent implements OnInit, OnDestroy {
         if (this.subscription) {
             this.subscription.unsubscribe();
         }
+    }
+
+    viewUses(filterBy, item) {
+        this.router.navigate(['/list-algorithm'], {
+            queryParams: {filterBy: filterBy, value: item}
+        });
     }
 }

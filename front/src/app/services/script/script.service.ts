@@ -1,10 +1,11 @@
 import {Injectable} from '@angular/core';
 import {ManagerFirebase} from "../../utils/manager-firebase";
-import {firstValueFrom, Observable} from "rxjs";
+import {catchError, firstValueFrom, Observable, throwError} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {FirebaseInterfaces} from "../../interface/enums";
 import {Author, BasicEntity, FileData, Script} from "../../interface/models";
 import {Global} from "../../utils/Global";
+import { saveAs } from 'file-saver';
 
 @Injectable({
     providedIn: 'root'
@@ -117,9 +118,10 @@ export class ScriptService {
 
     async persist(item: any, id: string = "") {
         if (id !== "") {
-            const saved = await this.fb.updateRecord(FirebaseInterfaces.SCRIPTS, id, item);
+            await this.fb.updateRecord(FirebaseInterfaces.SCRIPTS, id, item)
+            return id;
         } else {
-            const saved = await this.fb.saveRecord(FirebaseInterfaces.SCRIPTS, item);
+            return await this.fb.saveRecord(FirebaseInterfaces.SCRIPTS, item);
         }
     }
 
@@ -133,6 +135,19 @@ export class ScriptService {
             console.log('Error retrieving file list:', error);
             return [];
         }
+    }
+
+    downloadFile(url: string, fileName: string): void {
+        this.http.get(url, { responseType: 'blob' })
+            .pipe(
+                catchError(error => {
+                    console.error('Error al descargar el archivo:', error);
+                    return throwError(error);
+                })
+            )
+            .subscribe(blob => {
+                saveAs(blob, fileName);
+            });
     }
 
 }

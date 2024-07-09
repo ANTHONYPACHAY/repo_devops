@@ -132,5 +132,10 @@ export class ViewAlgorithmComponent implements OnInit, AfterViewInit {
     async cancel() {
     }
 
+    downloadItem(item: any) {
+        console.log(' downloadItem',  item);
+        this.scriptService.downloadFile(item.url, item.name);
+    }
+
 
 }

@@ -15,17 +15,17 @@
 
             <div class="p-field field col-12 sm:col-12 md:col-6 lg:col-6 xl:col-6">
                 <label class="mr-2 "><b>Tipo de Script:</b></label>
-                <p>{{scriptsItem.scriptType.entity.description}}</p>
+                <p>{{scriptsItem.scriptType?.entity?.description}}</p>
             </div>
 
             <div class="p-field field col-12 sm:col-12 md:col-6 lg:col-6 xl:col-6">
                 <label  class="mr-2 "><b>Sistema Operativo:</b></label>
-                <p>{{scriptsItem.operativeSystem.entity.description}}</p>
+                <p>{{scriptsItem.operativeSystem?.entity?.description}}</p>
             </div>
             <div class="p-field field col-12 sm:col-12 md:col-6 lg:col-6 xl:col-6">
                 <label class="mr-2 "><b>Herramienta de Automatización:</b></label>
 <!--                <p>{{scriptsItem.tool.entity.description}}</p>-->
-                <p-tag severity="info" [value]="scriptsItem.tool.entity.description" ></p-tag>
+                <p-tag severity="info" [value]="scriptsItem?.tool?.entity?.description" ></p-tag>
             </div>
 
             <!--            <div class="col-sm-12 col-md-12 col-xl-12 p-field" *ngIf="tipoVista === tipeEmul.VIDEO">-->
@@ -106,9 +106,10 @@
                             <td>{{ item?.name }}</td>
                             <td>
 <!--                                <a [href]="item.url" [download]="item.name" target="_blank" > <i class="pi pi-download" ></i></a>-->
-                                <a [href]="item.url" download>
-                                    <button pButton type="button" label="Download" icon="pi pi-download"></button>
-                                </a>
+<!--                                <a [href]="item.url" download>-->
+                                    <button pButton type="button" label="Download" icon="pi pi-download"
+                                    (click)="downloadItem(item)" ></button>
+<!--                                </a>-->
                             </td>
                         </tr>
                     </ng-template>

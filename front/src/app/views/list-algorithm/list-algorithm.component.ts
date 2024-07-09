@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {Author, BasicEntity, Script} from "../../interface/models";
 import {ProductService} from "../../demo/service/product.service";
 import {LayoutService} from "../../layout/service/app.layout.service";
@@ -12,7 +12,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {Global} from "../../utils/Global";
 import {TypeOrder} from "../../interface/enums";
 import {PanelModule} from "primeng/panel";
-import {TableModule} from "primeng/table";
+import {Table, TableModule} from "primeng/table";
 import {ButtonModule} from "primeng/button";
 import {RippleModule} from "primeng/ripple";
 import {DropdownModule} from "primeng/dropdown";
@@ -43,6 +43,8 @@ export class ListAlgorithmComponent implements OnInit, AfterViewInit {
     public scriptsList: Script[] = [];
     public scriptsItem: Script = {} as Script;
 
+    @ViewChild('dt') table: Table;
+
 
     constructor(private productService: ProductService,
                 public layoutService: LayoutService,
@@ -66,7 +68,7 @@ export class ListAlgorithmComponent implements OnInit, AfterViewInit {
         this.scriptsItem.operativeSystem = {};
         this.scriptsItem.authors = [];
         this.scriptsItem.tecnology = [];
-        this.loadInfo()
+        this.loadInfo();
     }
 
     async loadInfo() {
@@ -100,6 +102,13 @@ export class ListAlgorithmComponent implements OnInit, AfterViewInit {
         this.scriptsList = await this.scriptService.getListTurbo("tittle", TypeOrder.ASC);
         console.log('this.scriptsList', this.scriptsList);
 
+        this.route.queryParams.subscribe(params => {
+            console.log('queryParams', params);
+            const filterBy = params['filterBy']; // 'tool.entity.description'
+            const value = params['value'];
+            this.table.filter(value, filterBy, 'contains');
+        })
+
     }
 
     async cancel() {
@@ -113,6 +122,7 @@ export class ListAlgorithmComponent implements OnInit, AfterViewInit {
     gotoView(item: Script) {
         this.router.navigate(['view-algorithm', item.id]);
     }
+
 
 
 }

@@ -1,5 +1,4 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
-import {PanelModule} from "primeng/panel";
 import {ProductService} from "../../demo/service/product.service";
 import {LayoutService} from "../../layout/service/app.layout.service";
 import {ScriptService} from "../../services/script/script.service";
@@ -10,12 +9,6 @@ import {TecnologyService} from "../../services/tecnology/tecnology.service";
 import {AuthorService} from "../../services/author/author.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Author, BasicEntity, Script} from "../../interface/models";
-import {FormsModule} from "@angular/forms";
-import {DropdownModule} from "primeng/dropdown";
-import {NgClass} from "@angular/common";
-import {InputTextModule} from "primeng/inputtext";
-import {InputTextareaModule} from "primeng/inputtextarea";
-import {FileUploadModule} from "primeng/fileupload";
 import {Global} from "../../utils/Global";
 
 @Component({
@@ -114,8 +107,24 @@ export class CreateAlgorithmComponent implements OnInit, AfterViewInit {
         }
     }
 
-    saveItem() {
+    async saveItem() {
+        // this.scriptService.saveFile(this.scriptsItem.id, this.archivoSeleccionado);
+
+        this.scriptsItem.date_register = new Date();
+        this.scriptsItem.downloads = 0;
+        this.scriptsItem.views = 0;
+        this.scriptsItem.valid = false;
+        this.scriptsItem.authors = [{id: "UbcUehZCMdsxhs3LTs88"}];
+        this.scriptsItem.tecnology = [];
+        for (const tecnology of this.tecnologiasListSelected) {
+            this.scriptsItem.tecnology.push({id: tecnology.id})
+        }
+        console.log('scriptsItem', this.scriptsItem);
+
+        this.scriptsItem.id = await this.scriptService.persist(this.scriptsItem, this.scriptsItem.id);
+
         this.scriptService.saveFile(this.scriptsItem.id, this.archivoSeleccionado);
+
     }
 
     async cancel() {

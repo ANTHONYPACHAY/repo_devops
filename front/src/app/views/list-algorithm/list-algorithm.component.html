@@ -1,8 +1,9 @@
 <div class="col-12 pr-8 pl-8 sm:pl-0 sm:pr-0 md:pl-8 md:pr-8 lg:pl-8 lg:pr-8 xl:pl-8 xl:pr-8  ">
     <p-panel header="Listado de Scripts">
-        <p-table [value]="scriptsList" [paginator]="true" [rows]="10" [rowsPerPageOptions]="[5, 10, 20]" [filterDelay]="1000">
+        <p-table #dt [value]="scriptsList" [paginator]="true" [rows]="10" [rowsPerPageOptions]="[5, 10, 20]" [filterDelay]="1000">
             <ng-template pTemplate="header">
                 <tr>
+                    <th>#</th>
                     <th pSortableColumn="tittle" >Título <p-sortIcon field="tittle"></p-sortIcon> </th>
 <!--                    <th pSortableColumn="description" pFilterColumn>Description <p-sortIcon field="description"></p-sortIcon> <p-columnFilter type="text" field="description"></p-columnFilter></th>-->
                     <th pSortableColumn="operativeSystem.entity.description" >Sistema Operativo <p-sortIcon field="operativeSystem.entity.description"></p-sortIcon> </th>
@@ -13,6 +14,7 @@
                     <th></th>
                 </tr>
                 <tr>
+                    <th></th>
                     <th>
                         <p-columnFilter type="text" field="tittle"></p-columnFilter>
                     </th>
@@ -54,8 +56,11 @@
                     </th>
                 </tr>
             </ng-template>
-            <ng-template pTemplate="body" let-rowData>
+            <ng-template pTemplate="body" let-rowData  let-rowIndex="rowIndex" >
                 <tr>
+                    <td >
+                        {{rowIndex + 1}}
+                    </td>
                     <td>{{ rowData.tittle }}</td>
 <!--                    <td>{{ rowData.description }}</td>-->
                     <td>{{ rowData.operativeSystem.entity.description }}</td>
