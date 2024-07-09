@@ -19,7 +19,6 @@
                         <p-columnFilter type="text" field="tittle"></p-columnFilter>
                     </th>
                     <th>
-<!--                        <p-columnFilter type="text" field="operativeSystem.entity.description"></p-columnFilter>-->
                         <p-columnFilter type="text" field="operativeSystem.entity.id">
                             <ng-template pTemplate="filter" let-value let-filter="filterCallback">
                                 <p-dropdown [options]="operativeSystemList" [ngModel]="value" optionLabel="description"
@@ -29,7 +28,6 @@
                         </p-columnFilter>
                     </th>
                     <th>
-<!--                        <p-columnFilter type="text" field="tool.entity.description"></p-columnFilter>-->
                         <p-columnFilter type="text" field="tool.entity.id">
                             <ng-template pTemplate="filter" let-value let-filter="filterCallback">
                                 <p-dropdown [options]="toolList" [ngModel]="value" optionLabel="description"
