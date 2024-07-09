@@ -1,121 +1,251 @@
 <div class="col-12 pr-8 pl-8 sm:pl-0 sm:pr-0 md:pl-8 md:pr-8 lg:pl-8 lg:pr-8 xl:pl-8 xl:pr-8  ">
     <p-panel header="Gestionar Scripts">
 
+
+        <div class="">
+            <div class="font-medium text-3xl text-900 mb-3"><b>{{ scriptsItem.tittle }}</b></div>
+            <div class="text-500 mb-5"><p>{{ scriptsItem.description }}</p></div>
+            <ul class="list-none p-0 m-0">
+                <li class="flex align-items-center py-3 px-2 border-top-1 surface-border flex-wrap">
+                    <div class="text-500 w-6 md:w-2 font-medium">Tipo de Script:</div>
+                    <div
+                        class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">{{ scriptsItem.scriptType?.entity?.description }}
+                    </div>
+                </li>
+                <li class="flex align-items-center py-3 px-2 border-top-1 surface-border flex-wrap">
+                    <div class="text-500 w-6 md:w-2 font-medium">Sistema Operativo:</div>
+                    <div
+                        class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">{{ scriptsItem.operativeSystem?.entity?.description }}
+                    </div>
+                </li>
+                <li class="flex align-items-center py-3 px-2 border-top-1 surface-border flex-wrap">
+                    <div class="text-500 w-6 md:w-2 font-medium">Herramienta de Automatización:</div>
+                    <p-tag severity="info" [value]="scriptsItem?.tool?.entity?.description"></p-tag>
+                </li>
+                <li class="flex align-items-center py-3 px-2 border-top-1 surface-border flex-wrap">
+                    <div class="text-500 w-6 md:w-2 font-medium">Tecnologías:</div>
+                    <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">
+                        <p-chip *ngFor="let tec of scriptsItem.tecnology" [label]="tec.entity.description"
+                                class="mr-2"></p-chip>
+                    </div>
+                </li>
+                <li class="flex align-items-center py-3 px-2 border-top-1 surface-border flex-wrap">
+                    <div class="text-500 w-6 md:w-2 font-medium">Tecnologías:</div>
+                    <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">
+                        <p-chip [label]="scriptsItem?.views + ' Vistas'" [icon]="'pi pi-eye'" class="mr-2"></p-chip>
+                        <p-chip [label]="scriptsItem?.downloads + ' Descargas'" [icon]="'pi pi-download'"
+                                class="mr-2"></p-chip>
+                    </div>
+                </li>
+
+                <li class="flex align-items-center py-3 px-2 border-top-1 surface-border flex-wrap">
+                    <div class="text-500 w-6 md:w-2 font-medium">Autores:</div>
+                    <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">
+                        <p-chip *ngFor="let autor of scriptsItem.authors" styleClass="pl-0 pr-3">
+                            <span
+                                class="bg-primary border-circle w-2rem h-2rem flex align-items-center justify-content-center">
+                            {{ autor?.entity?.firstName[0] }}</span>
+                            <span
+                                class="ml-2 font-medium">{{ autor?.entity?.lastName + ' ' + autor?.entity?.firstName }}</span>
+                        </p-chip>
+                    </div>
+                </li>
+                <!--                <li class="flex align-items-center py-3 px-2 border-top-1 surface-border flex-wrap">-->
+                <!--                    <div class="text-500 w-6 md:w-2 font-medium">Director</div>-->
+                <!--                    <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">Michael Mann</div>-->
+                <!--                    <div class="w-6 md:w-2 flex justify-content-end">-->
+                <!--                        <button pButton pRipple label="Edit" icon="pi pi-pencil" class="p-button-text"></button>-->
+                <!--                    </div>-->
+                <!--                </li>-->
+                <!--                <li class="flex align-items-center py-3 px-2 border-top-1 surface-border flex-wrap">-->
+                <!--                    <div class="text-500 w-6 md:w-2 font-medium">Actors</div>-->
+                <!--                    <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">Robert De Niro, Al Pacino</div>-->
+                <!--                    <div class="w-6 md:w-2 flex justify-content-end">-->
+                <!--                        <button pButton pRipple label="Edit" icon="pi pi-pencil" class="p-button-text"></button>-->
+                <!--                    </div>-->
+                <!--                </li>-->
+                <!--                <li class="flex align-items-center py-3 px-2 border-top-1 border-bottom-1 surface-border flex-wrap">-->
+                <!--                    <div class="text-500 w-6 md:w-2 font-medium">Plot</div>-->
+                <!--                    <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1 line-height-3">-->
+                <!--                        A group of professional bank robbers start to feel the heat from police-->
+                <!--                        when they unknowingly leave a clue at their latest heist.-->
+                <!--                    </div>-->
+                <!--                    <div class="w-6 md:w-2 flex justify-content-end">-->
+                <!--                        <button pButton pRipple label="Edit" icon="pi pi-pencil" class="p-button-text"></button>-->
+                <!--                    </div>-->
+                <!--                </li>-->
+            </ul>
+        </div>
         <div class="p-fluid p-formgrid p-grid formgrid grid mb-n2">
-            <div class="p-field field col-12 sm:col-12 md:col-12 lg:col-12 xl:col-12">
-                <label class="mb-2"><b>Título:</b></label>
-                <p><b>{{scriptsItem.tittle}}</b></p>
+            <div class="col-12 flex justify-content-center mb-0">
+                <div
+                    class="card px-4 py-5 shadow-2 flex flex-column md:flex-row md:align-items-center justify-content-between mb-3"
+                >
+                    <div class="flex-grow-1 text-center">
+                        <div class=" font-medium text-xl mt-2 mb-3"><i class="pi pi-verified mr-1 "></i> Oficial</div>
+                        <div class=" font-semibold text-xl">Aprobado Por Nuestros Expertos</div>
+                        <!--                        <div class="font-semibold text-6xl"><p>{{0}}</p></div>-->
+                        <!--                        <div class="font-semibold text-2xl"><p>días</p></div>-->
+                    </div>
+                    <div class="mt-4 mr-auto md:mt-0 md:mr-0 ml-4">
+                        <img src="assets/aprobado.jpeg" height="100" width="100"/>
+                    </div>
+                </div>
             </div>
+        </div>
 
-            <div class="p-field field col-12 sm:col-12 md:col-12 lg:col-12 xl:col-12">
-                <label  class="mr-2 "><b>Descripción:</b></label>
-                <p>{{scriptsItem.description}}</p>
-            </div>
+        <p-divider align="center" type="dashed">
+            <i class="pi pi-file mr-2"></i>
+            <b>Listado de Archivos</b>
+        </p-divider>
+        <div class="p-fluid p-formgrid p-grid formgrid grid mb-n2">
+            <!--            <div class="p-field field col-12 sm:col-12 md:col-12 lg:col-12 xl:col-12">-->
+            <!--                <label class="mb-2"><b>Título:</b></label>-->
+            <!--                <p><b>{{ scriptsItem.tittle }}</b></p>-->
+            <!--            </div>-->
+
+            <!--            <div class="p-field field col-12 sm:col-12 md:col-12 lg:col-12 xl:col-12">-->
+            <!--                <label class="mr-2 "><b>Descripción:</b></label>-->
+            <!--                <p>{{ scriptsItem.description }}</p>-->
+            <!--            </div>-->
 
 
-            <div class="p-field field col-12 sm:col-12 md:col-6 lg:col-6 xl:col-6">
-                <label class="mr-2 "><b>Tipo de Script:</b></label>
-                <p>{{scriptsItem.scriptType?.entity?.description}}</p>
-            </div>
+            <!--            <div class="p-field field col-12 sm:col-12 md:col-6 lg:col-6 xl:col-6">-->
+            <!--                <label class="mr-2 "><b>Tipo de Script:</b></label>-->
+            <!--                <p>{{ scriptsItem.scriptType?.entity?.description }}</p>-->
+            <!--            </div>-->
 
-            <div class="p-field field col-12 sm:col-12 md:col-6 lg:col-6 xl:col-6">
-                <label  class="mr-2 "><b>Sistema Operativo:</b></label>
-                <p>{{scriptsItem.operativeSystem?.entity?.description}}</p>
-            </div>
-            <div class="p-field field col-12 sm:col-12 md:col-6 lg:col-6 xl:col-6">
-                <label class="mr-2 "><b>Herramienta de Automatización:</b></label>
-<!--                <p>{{scriptsItem.tool.entity.description}}</p>-->
-                <p-tag severity="info" [value]="scriptsItem?.tool?.entity?.description" ></p-tag>
-            </div>
+            <!--            <div class="p-field field col-12 sm:col-12 md:col-6 lg:col-6 xl:col-6">-->
+            <!--                <label class="mr-2 "><b>Sistema Operativo:</b></label>-->
+            <!--                <p>{{ scriptsItem.operativeSystem?.entity?.description }}</p>-->
+            <!--            </div>-->
+            <!--            <div class="p-field field col-12 sm:col-12 md:col-6 lg:col-6 xl:col-6">-->
+            <!--                <label class="mr-2 "><b>Herramienta de Automatización:</b></label>-->
+            <!--                &lt;!&ndash;                <p>{{scriptsItem.tool.entity.description}}</p>&ndash;&gt;-->
+            <!--                <p-tag severity="info" [value]="scriptsItem?.tool?.entity?.description"></p-tag>-->
+            <!--            </div>-->
 
             <!--            <div class="col-sm-12 col-md-12 col-xl-12 p-field" *ngIf="tipoVista === tipeEmul.VIDEO">-->
             <!--                <label for="url" class="mb-2">Enlace del video:</label>-->
             <!--                <input type="text" pInputText id="url" class="mb-2" [(ngModel)]="selectedItem.recurso_url" required/>-->
             <!--            </div>-->
-            <div class="p-field field col-12 sm:col-12 md:col-6 lg:col-6 xl:col-6">
-                <label  class="mr-2 "><b>Tecnologías:</b></label>
-                <p-table #dt [value]="scriptsItem.tecnology" [paginator]="false" styleClass="p-datatable-sm mt-2"
-                         [rowHover]="true" dataKey="id" sortField="description" sortMode="single"
-                         currentPageReportTemplate="mostrando {first} a {last} de {totalRecords} registros"
-                         [showCurrentPageReport]="true" >
-                    <!--    <ng-template pTemplate="caption">-->
-                    <!--      -->
-                    <!--    </ng-template>-->1
-                    <ng-template pTemplate="header">
-                        <tr>
-                            <th style="width: 3rem">
-                            </th>
-                            <th>Tecnología</th>
-                        </tr>
-                    </ng-template>
-                    <ng-template pTemplate="body" let-item  let-rowIndex="rowIndex">
-                        <tr>
-                            <td >
-                                {{rowIndex + 1}}
-                            </td>
-                            <td>{{ item.entity.description }}</td>
-                        </tr>
-                    </ng-template>
-                </p-table>
-            </div>
-            <div class="p-field field col-12 sm:col-12 md:col-6 lg:col-6 xl:col-6">
-                <label  class="mr-2 "><b>Autores:</b></label>
-                <p-table #dt [value]="scriptsItem.authors" [paginator]="false" styleClass="p-datatable-sm mt-2"
-                         [rowHover]="true" dataKey="id" sortField="description" sortMode="single"
-                         currentPageReportTemplate="mostrando {first} a {last} de {totalRecords} registros"
-                         [showCurrentPageReport]="true"  >
-                    <!--    <ng-template pTemplate="caption">-->
-                    <!--      -->
-                    <!--    </ng-template>-->
-                    <ng-template pTemplate="header">
-                        <tr>
-                            <th style="width: 3rem"> </th>
-                            <th>Nombres</th>
-                            <th>Email</th>
-                        </tr>
-                    </ng-template>
-                    <ng-template pTemplate="body" let-item  let-rowIndex="rowIndex">
-                        <tr>
-                            <td><p-avatar [label]="item?.entity?.firstName[0] ??'U'" size="large"></p-avatar></td>
-                            <td>{{ item?.entity?.firstName + ' ' + item?.entity?.lastName }}</td>
-                            <td>{{ item?.entity?.email }}</td>
-                        </tr>
-                    </ng-template>
-                </p-table>
-            </div>
+            <!--            <div class="p-field field col-12 sm:col-12 md:col-6 lg:col-6 xl:col-6">-->
+            <!--                <label class="mr-2 "><b>Tecnologías:</b></label>-->
+            <!--                <p-table #dt [value]="scriptsItem.tecnology" [paginator]="false" styleClass="p-datatable-sm mt-2"-->
+            <!--                         [rowHover]="true" dataKey="id" sortField="description" sortMode="single"-->
+            <!--                         currentPageReportTemplate="mostrando {first} a {last} de {totalRecords} registros"-->
+            <!--                         [showCurrentPageReport]="true">-->
+            <!--                    &lt;!&ndash;    <ng-template pTemplate="caption">&ndash;&gt;-->
+            <!--                    &lt;!&ndash;      &ndash;&gt;-->
+            <!--                    &lt;!&ndash;    </ng-template>&ndash;&gt;1-->
+            <!--                    <ng-template pTemplate="header">-->
+            <!--                        <tr>-->
+            <!--                            <th style="width: 3rem">-->
+            <!--                            </th>-->
+            <!--                            <th>Tecnología</th>-->
+            <!--                        </tr>-->
+            <!--                    </ng-template>-->
+            <!--                    <ng-template pTemplate="body" let-item let-rowIndex="rowIndex">-->
+            <!--                        <tr>-->
+            <!--                            <td>-->
+            <!--                                {{ rowIndex + 1 }}-->
+            <!--                            </td>-->
+            <!--                            <td>{{ item.entity.description }}</td>-->
+            <!--                        </tr>-->
+            <!--                    </ng-template>-->
+            <!--                </p-table>-->
+            <!--            </div>-->
+            <!--            <div class="p-field field col-12 sm:col-12 md:col-6 lg:col-6 xl:col-6">-->
+            <!--                <label class="mr-2 "><b>Autores:</b></label>-->
+            <!--                <p-table #dt [value]="scriptsItem.authors" [paginator]="false" styleClass="p-datatable-sm mt-2"-->
+            <!--                         [rowHover]="true" dataKey="id" sortField="description" sortMode="single"-->
+            <!--                         currentPageReportTemplate="mostrando {first} a {last} de {totalRecords} registros"-->
+            <!--                         [showCurrentPageReport]="true">-->
+            <!--                    &lt;!&ndash;    <ng-template pTemplate="caption">&ndash;&gt;-->
+            <!--                    &lt;!&ndash;      &ndash;&gt;-->
+            <!--                    &lt;!&ndash;    </ng-template>&ndash;&gt;-->
+            <!--                    <ng-template pTemplate="header">-->
+            <!--                        <tr>-->
+            <!--                            <th style="width: 3rem"></th>-->
+            <!--                            <th>Nombres</th>-->
+            <!--                            <th>Email</th>-->
+            <!--                        </tr>-->
+            <!--                    </ng-template>-->
+            <!--                    <ng-template pTemplate="body" let-item let-rowIndex="rowIndex">-->
+            <!--                        <tr>-->
+            <!--                            <td>-->
+            <!--                                <p-avatar [label]="item?.entity?.firstName[0] ??'U'" size="large"></p-avatar>-->
+            <!--                            </td>-->
+            <!--                            <td>{{ item?.entity?.firstName + ' ' + item?.entity?.lastName }}</td>-->
+            <!--                            <td>{{ item?.entity?.email }}</td>-->
+            <!--                        </tr>-->
+            <!--                    </ng-template>-->
+            <!--                </p-table>-->
+            <!--            </div>-->
 
-            <div class="p-field field col-12 sm:col-12 md:col-6 lg:col-6 xl:col-6">
-                <label  class="mr-2 "><b>Archivos:</b></label>
-                <p-table #dt [value]="scriptsItem.fileData" [paginator]="false" styleClass="p-datatable-sm mt-2"
-                         [rowHover]="true" dataKey="name" sortField="name" sortMode="single"
-                         currentPageReportTemplate="mostrando {first} a {last} de {totalRecords} registros"
-                         [showCurrentPageReport]="true"  >
-                    <!--    <ng-template pTemplate="caption">-->
-                    <!--      -->
-                    <!--    </ng-template>-->
-                    <ng-template pTemplate="header">
-                        <tr>
-                            <th style="width: 3rem"> # </th>
-                            <th>Nombre de Archivo</th>
-                            <th>Acción</th>
-                        </tr>
-                    </ng-template>
-                    <ng-template pTemplate="body" let-item  let-rowIndex="rowIndex">
-                        <tr>
-                            <td>{{rowIndex + 1}}</td>
-                            <td>{{ item?.name }}</td>
-                            <td>
-<!--                                <a [href]="item.url" [download]="item.name" target="_blank" > <i class="pi pi-download" ></i></a>-->
-<!--                                <a [href]="item.url" download>-->
-                                    <button pButton type="button" label="Download" icon="pi pi-download"
-                                    (click)="downloadItem(item)" ></button>
-<!--                                </a>-->
-                            </td>
-                        </tr>
-                    </ng-template>
-                </p-table>
-            </div>
+            <!--            <div class="col-12 flex justify-content-center mb-0">-->
+            <!--                &lt;!&ndash;                <div class="grid col-12 xl:col-8 lg:col-8 md:col-10 sm:col-12 mb-0">&ndash;&gt;-->
+            <!--                &lt;!&ndash;                    <div class="p-field field col-12 sm:col-12 md:col-6 lg:col-6 xl:col-6">&ndash;&gt;-->
+            <!--                &lt;!&ndash;                        <label class="mr-2 "><b>Archivos:</b></label>&ndash;&gt;-->
+            <!--                <p-table #dt [value]="scriptsItem.fileData" [paginator]="false" styleClass="p-datatable-sm mt-2"-->
+            <!--                         [rowHover]="true" dataKey="name" sortField="name" sortMode="single"-->
+            <!--                         currentPageReportTemplate="mostrando {first} a {last} de {totalRecords} registros"-->
+            <!--                         [showCurrentPageReport]="true">-->
+            <!--                    &lt;!&ndash;    <ng-template pTemplate="caption">&ndash;&gt;-->
+            <!--                    &lt;!&ndash;      &ndash;&gt;-->
+            <!--                    &lt;!&ndash;    </ng-template>&ndash;&gt;-->
+            <!--                    <ng-template pTemplate="header">-->
+            <!--                        <tr>-->
+            <!--                            <th style="width: 3rem"> #</th>-->
+            <!--                            <th>Nombre de Archivo</th>-->
+            <!--                            <th>Acción</th>-->
+            <!--                        </tr>-->
+            <!--                    </ng-template>-->
+            <!--                    <ng-template pTemplate="body" let-item let-rowIndex="rowIndex">-->
+            <!--                        <tr>-->
+            <!--                            <td>{{ rowIndex + 1 }}</td>-->
+            <!--                            <td>{{ item?.name }}</td>-->
+            <!--                            <td>-->
+            <!--                                &lt;!&ndash;                                <a [href]="item.url" [download]="item.name" target="_blank" > <i class="pi pi-download" ></i></a>&ndash;&gt;-->
+            <!--                                &lt;!&ndash;                                <a [href]="item.url" download>&ndash;&gt;-->
+            <!--                                <button pButton type="button" label="Download" icon="pi pi-download"-->
+            <!--                                        (click)="downloadItem(item)"></button>-->
+            <!--                                &lt;!&ndash;                                </a>&ndash;&gt;-->
+            <!--                            </td>-->
+            <!--                        </tr>-->
+            <!--                    </ng-template>-->
+            <!--                </p-table>-->
+            <!--                &lt;!&ndash;                    </div>&ndash;&gt;-->
+            <!--                &lt;!&ndash;                </div>&ndash;&gt;-->
+            <!--            </div>-->
 
+            <p-accordion class="w-full ml-8 mr-8" expandIcon="pi pi-plus" collapseIcon="pi pi-minus"
+                         [activeIndex]="[0]">
+                <p-accordionTab *ngFor="let file of scriptsItem.fileData; let rowindex = index">
+                    <ng-template pTemplate="header">
+                        <span class="flex align-items-center gap-2 w-full">
+                            <span class="font-bold white-space-nowrap">
+                                {{ rowindex + 1 + '.- ' + file.name }}
+                            </span>
+                            <p-badge value="Vista Previa No Disponible" severity="warning" class="ml-auto mr-2"/>
+                            <span>
+<!--                                <button pButton type="button" label="Descargar" icon="pi pi-download"-->
+                                <!--                                        (click)="downloadItem(file)"></button>-->
+
+                            </span>
+                        </span>
+                    </ng-template>
+                    <div>
+                        <div class="p-fluid p-formgrid p-grid formgrid grid mb-n2 ml-3 mr-4">
+                            <!--            <div class="p-field field col-12 sm:col-12 md:col-12 lg:col-12 xl:col-12">-->
+                            <a [href]="file.url" target="_blank" download>
+                                <button pButton type="button" label="Descargar" icon="pi pi-download"
+                                        (click)="downloadItem(file)"></button>
+                            </a>
+                        </div>
+                    </div>
+                </p-accordionTab>
+            </p-accordion>
 
         </div>
     </p-panel>

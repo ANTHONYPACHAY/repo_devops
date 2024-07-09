@@ -18,14 +18,14 @@
 <!--                </div>-->
 <!--            </div>-->
             <div class="col-12 xl:col-4 lg:col-12 md:col-12 " *ngFor="let count of counterList" >
-                <div class="card mb-0">
+                <div class="card mb-0 cursor-pointer "
+                     (click)="viewUses('scriptType.entity.id', count.id)">
                     <div class="flex justify-content-between mb-3">
                         <div>
                             <span class="block text-500 font-medium mb-3">{{count.label}}</span>
                             <div class="text-900 font-medium text-xl">{{count.quantity}}</div>
                         </div>
                         <div class="flex align-items-center justify-content-center {{count.badgeColor}} border-round"
-                             (click)="viewUses('scriptType.entity.id', count.id)"
                              [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
                             <i class="{{count.icon}} {{count.iconColor}} text-xl"></i>
                         </div>

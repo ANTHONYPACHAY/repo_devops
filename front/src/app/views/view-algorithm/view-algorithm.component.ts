@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
-import {Author, BasicEntity, Script} from "../../interface/models";
+import {Author, BasicEntity, Script, ViewsDownloads} from "../../interface/models";
 import {ProductService} from "../../demo/service/product.service";
 import {LayoutService} from "../../layout/service/app.layout.service";
 import {ScriptService} from "../../services/script/script.service";
@@ -21,10 +21,20 @@ import {PanelModule} from "primeng/panel";
 import {SharedModule} from "primeng/api";
 import {TableModule} from "primeng/table";
 import {TagModule} from "primeng/tag";
+import {CardModule} from "primeng/card";
+import {RippleModule} from "primeng/ripple";
+import {ChipsModule} from "primeng/chips";
+import {ChipModule} from "primeng/chip";
+import {NgForOf, NgStyle} from "@angular/common";
+import {AccordionModule} from "primeng/accordion";
+import {BadgeModule} from "primeng/badge";
+import {DividerModule} from "primeng/divider";
+import {ViewsDownloadsService} from "../../services/views-downloads/views-downloads.service";
+import {TypeViewDownload} from "../../interface/enums";
 
 @Component({
-  selector: 'app-view-algorithm',
-  standalone: true,
+    selector: 'app-view-algorithm',
+    standalone: true,
     imports: [
         AvatarModule,
         ButtonModule,
@@ -36,10 +46,19 @@ import {TagModule} from "primeng/tag";
         PanelModule,
         SharedModule,
         TableModule,
-        TagModule
+        TagModule,
+        CardModule,
+        RippleModule,
+        ChipsModule,
+        ChipModule,
+        NgForOf,
+        AccordionModule,
+        BadgeModule,
+        DividerModule,
+        NgStyle
     ],
-  templateUrl: './view-algorithm.component.html',
-  styleUrl: './view-algorithm.component.scss'
+    templateUrl: './view-algorithm.component.html',
+    styleUrl: './view-algorithm.component.scss'
 })
 export class ViewAlgorithmComponent implements OnInit, AfterViewInit {
 
@@ -54,6 +73,8 @@ export class ViewAlgorithmComponent implements OnInit, AfterViewInit {
 
     public archivoSeleccionado: File[] = [];
 
+    public viewDownloadFlag: any = {views: false, downloads: false};
+
     constructor(private productService: ProductService,
                 public layoutService: LayoutService,
                 private scriptService: ScriptService,
@@ -62,6 +83,7 @@ export class ViewAlgorithmComponent implements OnInit, AfterViewInit {
                 private toolService: ToolService,
                 private tecnologyService: TecnologyService,
                 private authorService: AuthorService,
+                private viewsDownloadsService: ViewsDownloadsService,
                 private router: Router,
                 private route: ActivatedRoute,
     ) {
@@ -76,7 +98,7 @@ export class ViewAlgorithmComponent implements OnInit, AfterViewInit {
         this.scriptsItem.operativeSystem = {};
         this.scriptsItem.authors = [];
         this.scriptsItem.tecnology = [];
-        this.loadInfo()
+        this.loadInfo();
     }
 
     async loadInfo() {
@@ -112,7 +134,8 @@ export class ViewAlgorithmComponent implements OnInit, AfterViewInit {
             this.scriptsItem = await this.scriptService.getByIdTurbo(id);
             this.scriptsItem.fileData = await this.scriptService.getFileList(this.scriptsItem.id)
             // this.scriptsItem = await this.scriptService.getById(id);
-            console.log('holi', this.scriptsItem)
+            // console.log('holi', this.scriptsItem);
+            await this.incrementViews();
         }
 
 
@@ -132,9 +155,43 @@ export class ViewAlgorithmComponent implements OnInit, AfterViewInit {
     async cancel() {
     }
 
-    downloadItem(item: any) {
-        console.log(' downloadItem',  item);
-        this.scriptService.downloadFile(item.url, item.name);
+    async downloadItem(item: any) {
+        console.log(' downloadItem', item);
+        // this.scriptService.downloadFile(item.url, item.name);
+        await this.incrementDownloads();
+    }
+
+    async incrementViews() {
+        if (!this.viewDownloadFlag.views) {
+            const script = await this.scriptService.getById(this.scriptsItem.id);
+            script.views = (script.views ?? 0) + 1;
+            await this.scriptService.persist(script, script.id);
+            this.viewDownloadFlag.views = true;
+            // guardar el registro de la visita
+            await this.saveViewDownload(script.id, TypeViewDownload.VIEW);
+        }
+    }
+
+    async incrementDownloads() {
+        if (!this.viewDownloadFlag.downloads) {
+            const script = await this.scriptService.getById(this.scriptsItem.id);
+            script.downloads = (script.downloads ?? 0) + 1;
+            await this.scriptService.persist(script, script.id);
+            this.viewDownloadFlag.downloads = true;
+            // guardar el registro de la descarga
+            await this.saveViewDownload(script.id, TypeViewDownload.DOWNLOAD);
+
+        }
+    }
+
+    async saveViewDownload(uidScript: string, type: string): Promise<void> {
+        const itemDownload: ViewsDownloads = {
+            uid_script: uidScript,
+            date: new Date(),
+            type: type
+        };
+        //.toISOString(),
+        await this.viewsDownloadsService.persist({}, '');
     }
 
 
