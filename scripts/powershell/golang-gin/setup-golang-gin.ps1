@@ -7,10 +7,21 @@ choco upgrade chocolatey
 
 # Instalación de Go
 Write-Output "Instalando Go..."
-choco install golang --version $GoVersion -y
+choco install golang --version $GoVersion -y --force
 
-# Agregar Go al PATH
+# Asegurar que Go esté en el PATH
+Write-Output "Agregando Go al PATH..."
 $env:Path += ";C:\Go\bin"
+[System.Environment]::SetEnvironmentVariable("Path", $env:Path, [System.EnvironmentVariableTarget]::Machine)
+
+# Importar módulo de Chocolatey y refrescar variables de entorno
+Write-Output "Importando módulo de Chocolatey y refrescando variables de entorno..."
+Import-Module "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
+refreshenv
+
+# Verificar manualmente el PATH
+Write-Output "Verificando el PATH manualmente..."
+$env:Path
 
 # Verificar instalación de Go
 Write-Output "Verificando instalación de Go..."
@@ -43,7 +54,7 @@ func main() {
     r.GET("/", func(c *gin.Context) {
         c.String(200, "Hello, World!")
     })
-    r.Run() // listen and serve on 0.0.0.0:8080
+    r.Run(":9090") // listen and serve on 0.0.0.0:9090
 }
 "@
 $MainGo | Out-File -FilePath .\main.go
