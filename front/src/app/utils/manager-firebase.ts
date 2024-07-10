@@ -141,26 +141,26 @@ export class ManagerFirebase {
                 const fileDataObservables = result.items.map(fileRef =>
                     from(getMetadata(fileRef)).pipe(
                         switchMap(metadata =>
-                            // from(getDownloadURL(fileRef)).pipe(
-                            //     map(url => ({
-                            //         name: fileRef.name,
-                            //         url,
-                            //         contentType: metadata.contentType,
-                            //         size: metadata.size,
-                            //         timeCreated: metadata.timeCreated,
-                            //         updated: metadata.updated
-                            //     }))
-                            // )
-                        from(getBlob(fileRef)).pipe(
-                                map(blob => ({
+                            from(getDownloadURL(fileRef)).pipe(
+                                map(url => ({
                                     name: fileRef.name,
-                                    blob,
+                                    url,
                                     contentType: metadata.contentType,
                                     size: metadata.size,
                                     timeCreated: metadata.timeCreated,
                                     updated: metadata.updated
                                 }))
                             )
+                        // from(getBlob(fileRef)).pipe(
+                        //         map(blob => ({
+                        //             name: fileRef.name,
+                        //             blob,
+                        //             contentType: metadata.contentType,
+                        //             size: metadata.size,
+                        //             timeCreated: metadata.timeCreated,
+                        //             updated: metadata.updated
+                        //         }))
+                        //     )
                         )
                     )
                 );
