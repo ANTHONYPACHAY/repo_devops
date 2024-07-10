@@ -40,12 +40,23 @@ import {CreateAlgorithmComponent} from "./views/create-algorithm/create-algorith
 import {DropdownModule} from "primeng/dropdown";
 import {FormsModule} from "@angular/forms";
 import {PanelModule} from "primeng/panel";
+import {MarkdownComponent} from "./component/markdown/markdown.component";
+import {ViewAlgorithmComponent} from "./views/view-algorithm/view-algorithm.component";
+import {ButtonModule} from "primeng/button";
+import {PaginatorModule} from "primeng/paginator";
+import {SharedModule} from "primeng/api";
+import {ChipsModule} from "primeng/chips";
+import {AccordionModule} from "primeng/accordion";
+import {BadgeModule} from "primeng/badge";
+import {DividerModule} from "primeng/divider";
 
 @NgModule({
     declarations: [
         AppComponent,
         NotfoundComponent,
-        CreateAlgorithmComponent
+        CreateAlgorithmComponent,
+        ViewAlgorithmComponent,
+        MarkdownComponent
     ],
     imports: [AppRoutingModule, AppLayoutModule,
 
@@ -75,12 +86,26 @@ import {PanelModule} from "primeng/panel";
         ConfirmPopupModule,
         ChartModule,
         CarouselModule,
-        FileUploadModule, DropdownModule, FormsModule, PanelModule],
+        FileUploadModule,
+        DropdownModule,
+        FormsModule,
+        PanelModule,
+        ButtonModule,
+        PaginatorModule,
+        SharedModule,
+        ChipsModule,
+        AccordionModule,
+        BadgeModule,
+        DividerModule,
+    ],
     providers: [
-        { provide: LocationStrategy, useClass: PathLocationStrategy },
+        {provide: LocationStrategy, useClass: PathLocationStrategy},
         CountryService, CustomerService, EventService, IconService, NodeService,
         PhotoService, ProductService, ManagerFirebase
     ],
     bootstrap: [AppComponent],
+    exports: [
+        MarkdownComponent
+    ]
 })
 export class AppModule {}

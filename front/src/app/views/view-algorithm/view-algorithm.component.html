@@ -237,11 +237,15 @@
                     </ng-template>
                     <div>
                         <div class="p-fluid p-formgrid p-grid formgrid grid mb-n2 ml-3 mr-4">
-                            <!--            <div class="p-field field col-12 sm:col-12 md:col-12 lg:col-12 xl:col-12">-->
-                            <a [href]="file.url" target="_blank" download>
-                                <button pButton type="button" label="Descargar" icon="pi pi-download"
-                                        (click)="downloadItem(file)"></button>
-                            </a>
+                            <div class="p-field field col-12 sm:col-12 md:col-12 lg:col-12 xl:col-12">
+<!--                                <a [href]="file.url" target="_blank" download>-->
+<!--                                    <button pButton type="button" label="Descargar" icon="pi pi-download"-->
+<!--                                            (click)="downloadItem(file)"></button>-->
+<!--                                </a>-->
+                            </div>
+                            <div class="p-field field col-12 sm:col-12 md:col-12 lg:col-12 xl:col-12">
+<!--                                <app-markdown [fileInput]="file" ></app-markdown>-->
+                            </div>
                         </div>
                     </div>
                 </p-accordionTab>

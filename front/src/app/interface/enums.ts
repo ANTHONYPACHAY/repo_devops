@@ -23,3 +23,9 @@ export enum TypeOrder {
     "ASC" =  1,
     "DESC" =  2,
 }
+
+export enum TypeFile {
+    "MARKDOWN" =  "md",
+    "CODE" =  "code",
+    "TEXT" =  "text",
+}

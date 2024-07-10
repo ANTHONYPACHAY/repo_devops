@@ -3,7 +3,7 @@ import { initializeApp } from 'firebase/app';
 import { Auth, Unsubscribe, onAuthStateChanged, getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail, signOut } from 'firebase/auth';
 // import { getDatabase, ref, get, DataSnapshot, set, push, update, remove } from 'firebase/database';
 import { getFirestore, getDocs, getDoc, collection, doc, addDoc, updateDoc, deleteDoc, query, where, orderBy, WhereFilterOp } from 'firebase/firestore';
-import { getStorage, ref as storageRef, uploadBytes, getDownloadURL, listAll, getMetadata } from 'firebase/storage';
+import { getStorage, ref as storageRef, uploadBytes, getDownloadURL, getBlob, listAll, getMetadata } from 'firebase/storage';
 import {finalize, forkJoin, from, Observable, switchMap} from 'rxjs';
 import firebase from "firebase/compat";
 import ThenableReference = firebase.database.ThenableReference;
@@ -141,10 +141,20 @@ export class ManagerFirebase {
                 const fileDataObservables = result.items.map(fileRef =>
                     from(getMetadata(fileRef)).pipe(
                         switchMap(metadata =>
-                            from(getDownloadURL(fileRef)).pipe(
-                                map(url => ({
+                            // from(getDownloadURL(fileRef)).pipe(
+                            //     map(url => ({
+                            //         name: fileRef.name,
+                            //         url,
+                            //         contentType: metadata.contentType,
+                            //         size: metadata.size,
+                            //         timeCreated: metadata.timeCreated,
+                            //         updated: metadata.updated
+                            //     }))
+                            // )
+                        from(getBlob(fileRef)).pipe(
+                                map(blob => ({
                                     name: fileRef.name,
-                                    url,
+                                    blob,
                                     contentType: metadata.contentType,
                                     size: metadata.size,
                                     timeCreated: metadata.timeCreated,

@@ -84,9 +84,11 @@ export interface ViewsDownloads {
 
 export interface FileData {
     name: string;
-    url: string;
+    url?: string;
+    blob?: Blob;
     contentType?: string;
     size?: number;
     timeCreated?: string;
     updated?: string;
 }
+

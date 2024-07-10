@@ -31,32 +31,33 @@ import {BadgeModule} from "primeng/badge";
 import {DividerModule} from "primeng/divider";
 import {ViewsDownloadsService} from "../../services/views-downloads/views-downloads.service";
 import {TypeViewDownload} from "../../interface/enums";
+import {MarkdownComponent} from "../../component/markdown/markdown.component";
 
 @Component({
     selector: 'app-view-algorithm',
-    standalone: true,
-    imports: [
-        AvatarModule,
-        ButtonModule,
-        DropdownModule,
-        FileUploadModule,
-        InputTextModule,
-        InputTextareaModule,
-        PaginatorModule,
-        PanelModule,
-        SharedModule,
-        TableModule,
-        TagModule,
-        CardModule,
-        RippleModule,
-        ChipsModule,
-        ChipModule,
-        NgForOf,
-        AccordionModule,
-        BadgeModule,
-        DividerModule,
-        NgStyle
-    ],
+    // standalone: true,
+    // imports: [
+    //     AvatarModule,
+    //     ButtonModule,
+    //     DropdownModule,
+    //     FileUploadModule,
+    //     InputTextModule,
+    //     InputTextareaModule,
+    //     PaginatorModule,
+    //     PanelModule,
+    //     SharedModule,
+    //     TableModule,
+    //     TagModule,
+    //     CardModule,
+    //     RippleModule,
+    //     ChipsModule,
+    //     ChipModule,
+    //     NgForOf,
+    //     AccordionModule,
+    //     BadgeModule,
+    //     DividerModule,
+    //     NgStyle
+    // ],
     templateUrl: './view-algorithm.component.html',
     styleUrl: './view-algorithm.component.scss'
 })
@@ -191,7 +192,7 @@ export class ViewAlgorithmComponent implements OnInit, AfterViewInit {
             type: type
         };
         //.toISOString(),
-        await this.viewsDownloadsService.persist({}, '');
+        await this.viewsDownloadsService.persist(itemDownload, '');
     }
 
 
