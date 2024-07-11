@@ -33,6 +33,7 @@ export class ManagerFirebase {
         this.storage = getStorage();
     }
     public async logIn(email: string, password: string) {
+        console.log(`Logged in as ${email}`);
         return signInWithEmailAndPassword(this.auth, email, password);
     }
 
@@ -125,7 +126,9 @@ export class ManagerFirebase {
             const filePath = `${folderId}/${file.name}`;
             const stref = storageRef(this.storage, filePath);
             try {
-                await uploadBytes(stref, file);
+                await uploadBytes(stref, file, {
+                    contentType: this.getMimeType(file)
+                });
                 const url = await getDownloadURL(stref);
                 console.log('File available at', url);
             } catch (error) {
@@ -133,6 +136,29 @@ export class ManagerFirebase {
             }
         }
     }
+
+    private getMimeType(file: File): string {
+        const extension = file.name.split('.').pop()?.toLowerCase();
+        switch (extension) {
+            case 'txt':
+            case 'md':
+            case 'license':
+                return 'text/plain';
+            case 'html':
+                return 'text/html';
+            case 'css':
+                return 'text/css';
+            case 'js':
+                return 'application/javascript';
+            case 'json':
+                return 'application/json';
+            case 'xml':
+                return 'application/xml';
+            default:
+                return 'text/plain';
+        }
+    }
+
     getFilesInFolder(folderId: string): Observable<FileData[]> {
         const folderRef = storageRef(this.storage, folderId);
 
@@ -148,7 +174,10 @@ export class ManagerFirebase {
                                     contentType: metadata.contentType,
                                     size: metadata.size,
                                     timeCreated: metadata.timeCreated,
-                                    updated: metadata.updated
+                                    updated: metadata.updated,
+                                    trans: {
+                                        fileRef, metadata, url
+                                    }
                                 }))
                             )
                         // from(getBlob(fileRef)).pipe(

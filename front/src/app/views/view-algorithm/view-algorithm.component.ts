@@ -30,8 +30,10 @@ import {AccordionModule} from "primeng/accordion";
 import {BadgeModule} from "primeng/badge";
 import {DividerModule} from "primeng/divider";
 import {ViewsDownloadsService} from "../../services/views-downloads/views-downloads.service";
-import {TypeViewDownload} from "../../interface/enums";
+import {TypeFile, TypeViewDownload} from "../../interface/enums";
 import {MarkdownComponent} from "../../component/markdown/markdown.component";
+import {DomSanitizer} from "@angular/platform-browser";
+import {marked} from "marked";
 
 @Component({
     selector: 'app-view-algorithm',
@@ -75,6 +77,7 @@ export class ViewAlgorithmComponent implements OnInit, AfterViewInit {
     public archivoSeleccionado: File[] = [];
 
     public viewDownloadFlag: any = {views: false, downloads: false};
+    public safeFileUrl: any;
 
     constructor(private productService: ProductService,
                 public layoutService: LayoutService,
@@ -85,6 +88,7 @@ export class ViewAlgorithmComponent implements OnInit, AfterViewInit {
                 private tecnologyService: TecnologyService,
                 private authorService: AuthorService,
                 private viewsDownloadsService: ViewsDownloadsService,
+                private sanitizer: DomSanitizer,
                 private router: Router,
                 private route: ActivatedRoute,
     ) {
@@ -100,6 +104,7 @@ export class ViewAlgorithmComponent implements OnInit, AfterViewInit {
         this.scriptsItem.authors = [];
         this.scriptsItem.tecnology = [];
         this.loadInfo();
+
     }
 
     async loadInfo() {
@@ -135,7 +140,7 @@ export class ViewAlgorithmComponent implements OnInit, AfterViewInit {
             this.scriptsItem = await this.scriptService.getByIdTurbo(id);
             this.scriptsItem.fileData = await this.scriptService.getFileList(this.scriptsItem.id)
             // this.scriptsItem = await this.scriptService.getById(id);
-            // console.log('holi', this.scriptsItem);
+            console.log('holi', this.scriptsItem);
             await this.incrementViews();
         }
 
@@ -158,7 +163,7 @@ export class ViewAlgorithmComponent implements OnInit, AfterViewInit {
 
     async downloadItem(item: any) {
         console.log(' downloadItem', item);
-        this.scriptService.downloadFile(item.url, item.name);
+        // this.scriptService.downloadFile(item.url, item.name);
         //     const url = window.URL.createObjectURL(item.blob);
         //     const a = document.createElement('a');
         //     a.href = url;
@@ -168,6 +173,39 @@ export class ViewAlgorithmComponent implements OnInit, AfterViewInit {
         //     document.body.removeChild(a);
         //     window.URL.revokeObjectURL(url);
         await this.incrementDownloads();
+    }
+    public async asz(item: any) {
+        // this.scriptService.downloadFile(item.url, item.name);
+        let resp = await this.scriptService.readFile(item.url, item.name).toPromise();
+        console.log('asz', resp);
+
+        const reader = new FileReader();
+        reader.onload = async () => {
+            const fileContent = reader.result as string;
+            console.log('fileContent', fileContent);
+        };
+        reader.readAsText(resp);
+
+        // this.safeFileUrl = this.sanitizer.bypassSecurityTrustResourceUrl(item.url);
+        // window.open(this.safeFileUrl, '_blank');
+        // fetch(item.url)
+        //     .then(response => {
+        //         console.log('response', response)
+        //         if (response.ok) {
+        //             console.log('Request succeeded');
+        //         } else {
+        //             console.log('Request failed');
+        //         }
+        //     })
+        //     .catch(error => {
+        //         console.error('Fetch error:', error);
+        //     });
+        // fetch(item.url, { mode: 'no-cors' })
+        //     .then(response => response.text())
+        //     .then(text => {
+        //         console.log('fetch(item.url)', text);
+        //     })
+        //     .catch(error => console.error('Error fetching file content:', error));
     }
 
     async incrementViews() {

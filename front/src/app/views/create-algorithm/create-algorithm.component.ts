@@ -110,18 +110,18 @@ export class CreateAlgorithmComponent implements OnInit, AfterViewInit {
     async saveItem() {
         // this.scriptService.saveFile(this.scriptsItem.id, this.archivoSeleccionado);
 
-        this.scriptsItem.date_register = new Date();
-        this.scriptsItem.downloads = 0;
-        this.scriptsItem.views = 0;
-        this.scriptsItem.valid = false;
-        this.scriptsItem.authors = [{id: "UbcUehZCMdsxhs3LTs88"}];
-        this.scriptsItem.tecnology = [];
-        for (const tecnology of this.tecnologiasListSelected) {
-            this.scriptsItem.tecnology.push({id: tecnology.id})
-        }
-        console.log('scriptsItem', this.scriptsItem);
-
-        this.scriptsItem.id = await this.scriptService.persist(this.scriptsItem, this.scriptsItem.id);
+        // this.scriptsItem.date_register = new Date();
+        // this.scriptsItem.downloads = 0;
+        // this.scriptsItem.views = 0;
+        // this.scriptsItem.valid = false;
+        // this.scriptsItem.authors = [{id: "UbcUehZCMdsxhs3LTs88"}];
+        // this.scriptsItem.tecnology = [];
+        // for (const tecnology of this.tecnologiasListSelected) {
+        //     this.scriptsItem.tecnology.push({id: tecnology.id})
+        // }
+        // console.log('scriptsItem', this.scriptsItem);
+        //
+        // this.scriptsItem.id = await this.scriptService.persist(this.scriptsItem, this.scriptsItem.id);
 
         this.scriptService.saveFile(this.scriptsItem.id, this.archivoSeleccionado);
 

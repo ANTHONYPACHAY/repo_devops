@@ -7,3 +7,4 @@
 front/package-lock.json
 front/.firebaserc
 front/.firebase/hosting.ZGlzdA.cache
+/backend/node_modules

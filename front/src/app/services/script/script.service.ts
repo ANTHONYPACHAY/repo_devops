@@ -19,6 +19,7 @@ export class ScriptService {
     private authorsList: Author[] = [];
     public initialized: boolean = false;
     constructor(private http: HttpClient, private fb: ManagerFirebase) {
+        this.fb.logIn('abc@gmail.com', 'Abc12345');
     }
 
     getJsonData(): Observable<any> {
@@ -137,8 +138,15 @@ export class ScriptService {
         }
     }
 
+    readFile(url: string, fileName: string) {
+        let backendUrl = 'http://localhost:3000/download';
+        return this.http.get(`${backendUrl}?url=${encodeURIComponent(url)}`, { responseType: 'blob' });
+    }
     downloadFile(url: string, fileName: string): void {
-        this.http.get(url, { responseType: 'blob' })
+
+        let backendUrl = 'http://localhost:3000/download';
+
+        this.http.get(`${backendUrl}?url=${encodeURIComponent(url)}`, { responseType: 'blob' })
             .pipe(
                 catchError(error => {
                     console.error('Error al descargar el archivo:', error);
@@ -149,5 +157,7 @@ export class ScriptService {
                 saveAs(blob, fileName);
             });
     }
+
+
 
 }
