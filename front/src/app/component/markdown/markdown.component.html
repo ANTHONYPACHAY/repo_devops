@@ -1,1 +1,4 @@
 <div *ngIf="isMarkDown()" [innerHTML]="convertedMarkdown"></div>
+<pre *ngIf="isCode()" >
+    <code [innerHTML]="convertedMarkdown"></code>
+</pre>

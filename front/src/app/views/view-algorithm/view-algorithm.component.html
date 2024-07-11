@@ -227,7 +227,7 @@
                             <span class="font-bold white-space-nowrap">
                                 {{ rowindex + 1 + '.- ' + file.name }}
                             </span>
-                            <p-badge value="Vista Previa No Disponible" severity="warning" class="ml-auto mr-2"/>
+<!--                            <p-badge value="Vista Previa No Disponible" severity="warning" class="ml-auto mr-2"/>-->
                             <span>
 <!--                                <button pButton type="button" label="Descargar" icon="pi pi-download"-->
                                 <!--                                        (click)="downloadItem(file)"></button>-->
@@ -238,17 +238,17 @@
                     <div>
                         <div class="p-fluid p-formgrid p-grid formgrid grid mb-n2 ml-3 mr-4">
                             <div class="p-field field col-12 sm:col-12 md:col-12 lg:col-12 xl:col-12">
-                                <!--a [href]="file.url" target="_blank" download>
-                                    <button pButton type="button" label="Descargar" icon="pi pi-download"
-                                            (click)="downloadItem(file)"></button>
-                                </a-->
-                                <button pButton type="button" label="Descargar2" icon="pi pi-download"
-                                (click)="asz(file)"></button>
+<!--                                &lt;!&ndash;a [href]="file.url" target="_blank" download>-->
+<!--                                    <button pButton type="button" label="Descargar" icon="pi pi-download"-->
+<!--                                            (click)="downloadItem(file)"></button>-->
+<!--                                </a&ndash;&gt;-->
+<!--                                <button pButton type="button" label="Descargar2" icon="pi pi-download"-->
+<!--                                (click)="asz(file)"></button>-->
                             </div>
                             <div class="p-field field col-12 sm:col-12 md:col-12 lg:col-12 xl:col-12">
-<!--                                <app-markdown [fileInput]="file"></app-markdown>-->
-                                <button pButton type="button" label="Descargar2" icon="pi pi-download"
-                                        (click)="asz(file)"></button>
+                                <app-markdown [fileInput]="file"></app-markdown>
+<!--                                <button pButton type="button" label="Descargar2" icon="pi pi-download"-->
+<!--                                        (click)="asz(file)"></button>-->
 
                             </div>
                         </div>

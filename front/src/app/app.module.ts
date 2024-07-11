@@ -96,7 +96,7 @@ import {DividerModule} from "primeng/divider";
         ChipsModule,
         AccordionModule,
         BadgeModule,
-        DividerModule,
+        DividerModule
     ],
     providers: [
         {provide: LocationStrategy, useClass: PathLocationStrategy},

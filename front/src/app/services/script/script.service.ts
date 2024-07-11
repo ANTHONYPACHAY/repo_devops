@@ -138,13 +138,13 @@ export class ScriptService {
         }
     }
 
-    readFile(url: string, fileName: string) {
-        let backendUrl = 'http://localhost:3000/download';
+    readFile(url: string) {
+        let backendUrl = 'https://fm0lg09r-3000.use2.devtunnels.ms/download';
         return this.http.get(`${backendUrl}?url=${encodeURIComponent(url)}`, { responseType: 'blob' });
     }
     downloadFile(url: string, fileName: string): void {
 
-        let backendUrl = 'http://localhost:3000/download';
+        let backendUrl = 'https://fm0lg09r-3000.use2.devtunnels.ms/download';
 
         this.http.get(`${backendUrl}?url=${encodeURIComponent(url)}`, { responseType: 'blob' })
             .pipe(

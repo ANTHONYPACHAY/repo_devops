@@ -176,7 +176,7 @@ export class ViewAlgorithmComponent implements OnInit, AfterViewInit {
     }
     public async asz(item: any) {
         // this.scriptService.downloadFile(item.url, item.name);
-        let resp = await this.scriptService.readFile(item.url, item.name).toPromise();
+        let resp = await this.scriptService.readFile(item.url).toPromise();
         console.log('asz', resp);
 
         const reader = new FileReader();
