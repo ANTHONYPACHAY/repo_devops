@@ -8,3 +8,10 @@ front/package-lock.json
 front/.firebaserc
 front/.firebase/hosting.ZGlzdA.cache
 /backend/node_modules
+/backend/autenticacion/.idea
+/backend/autenticacion/.mvn
+/backend/autenticacion/target
+/backend/estadistica/target
+/backend/eureka/.mvn
+/backend/gestion/.mvn
+/backend/gestion/target

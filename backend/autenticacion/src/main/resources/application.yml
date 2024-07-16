@@ -1,0 +1,21 @@
+server:
+  port: 8081
+  servlet:
+    context-path: /ms_autenticacion
+
+spring:
+  application:
+    name: ms-autenticacion
+  datasource:
+    url: ${DB_PRODUCTO_URL:jdbc:postgresql://localhost:5432/tesis}
+    username: ${DB_USUARIO:postgres}
+    password: ${DB_CLAVE:anthony23}
+    driver-class-name: ${DB_DRIVER:org.postgresql.Driver}
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_URL:http://localhost:8080/eureka}
+  instance:
+    preferIpAddress: true
+    hostname: ms-autenticacion
