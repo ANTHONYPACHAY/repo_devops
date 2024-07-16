@@ -1,0 +1,147 @@
+@startuml
+
+
+
+class person {
+    +id: SERIAL
+    +first_name: VARCHAR(255)
+    +last_name: VARCHAR(255)
+    +email: VARCHAR(255)
+    +profile_image: VARCHAR(255)
+    +estado: CHAR(1)
+}
+
+class users {
+    +id: SERIAL
+    +user_name: VARCHAR(255)
+    +password: VARCHAR(255)
+    +person_id: INTEGER
+    +estado: CHAR(1)
+}
+
+class rol {
+    +id: SERIAL
+    +code: VARCHAR(255)
+    +description: TEXT
+    +estado: CHAR(1)
+}
+
+class users_rol {
+    +id: SERIAL
+    +users_id: INTEGER
+    +rol_id: INTEGER
+    +estado: CHAR(1)
+}
+
+class script {
+    +id: SERIAL
+    +tittle: VARCHAR(255)
+    +description: TEXT
+    +views: INTEGER
+    +downloads: INTEGER
+    +valid: BOOLEAN
+    +date_register: TIMESTAMP
+    +estado: CHAR(1)
+}
+
+class script_author {
+    +id: SERIAL
+    +script_id: INTEGER
+    +person_id: INTEGER
+    +estado: CHAR(1)
+}
+
+class tecnology {
+    +id: SERIAL
+    +code: VARCHAR(255)
+    +description: TEXT
+    +estado: CHAR(1)
+}
+
+class script_tecnology {
+    +id: SERIAL
+    +script_id: INTEGER
+    +tecnology_id: INTEGER
+    +estado: CHAR(1)
+}
+
+class tool {
+    +id: SERIAL
+    +code: VARCHAR(255)
+    +description: TEXT
+    +estado: CHAR(1)
+}
+
+class script_tool {
+    +id: SERIAL
+    +script_id: INTEGER
+    +tool_id: INTEGER
+    +estado: CHAR(1)
+}
+
+class script_type {
+    +id: SERIAL
+    +code: VARCHAR(255)
+    +description: TEXT
+    +estado: CHAR(1)
+}
+
+class script_script_type {
+    +id: SERIAL
+    +script_id: INTEGER
+    +script_type_id: INTEGER
+    +estado: CHAR(1)
+}
+
+class operative_system {
+    +id: SERIAL
+    +code: VARCHAR(255)
+    +description: TEXT
+    +estado: CHAR(1)
+}
+
+class script_operative_system {
+    +id: SERIAL
+    +script_id: INTEGER
+    +operative_system_id: INTEGER
+    +estado: CHAR(1)
+}
+
+class views_downloads {
+    +id: SERIAL
+    +script_id: INTEGER
+    +date: TIMESTAMP
+    +type: VARCHAR(255)
+    +estado: CHAR(1)
+}
+
+class file_data {
+    +id: SERIAL
+    +script_id: INTEGER
+    +name: VARCHAR(255)
+    +url: VARCHAR(255)
+    +blob: BYTEA
+    +contentType: VARCHAR(255)
+    +size: INTEGER
+    +time_created: TIMESTAMP
+    +updated: TIMESTAMP
+    +estado: CHAR(1)
+}
+
+person "1" --> "0..1" users : person_id
+users "1" --> "1..*" users_rol : users_id
+rol "1" --> "1..*" users_rol : rol_id
+script "1" --> "0..*" script_author : script_id
+person "1" --> "0..*" script_author : person_id
+script "1" --> "0..*" script_tecnology : script_id
+tecnology "1" --> "0..*" script_tecnology : tecnology_id
+script "1" --> "0..*" script_tool : script_id
+tool "1" --> "0..*" script_tool : tool_id
+script "1" --> "0..*" script_script_type : script_id
+script_type "1" --> "0..*" script_script_type : script_type_id
+script "1" --> "0..*" script_operative_system : script_id
+operative_system "1" --> "0..*" script_operative_system : operative_system_id
+script "1" --> "0..*" views_downloads : script_id
+script "1" --> "0..*" file_data : script_id
+
+@enduml

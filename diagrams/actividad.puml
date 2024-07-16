@@ -1,0 +1,26 @@
+@startuml
+start
+
+:Acceder a la pantalla "Donar";
+:Leer las indicaciones;
+
+:Ingresar título del algoritmo;
+:Ingresar descripción del algoritmo;
+
+:Seleccionar tipo de algoritmo;
+choice Tipo de algoritmo es:
+    case "Automatización y Gestión de Configuración":
+    case "Contenerización y Automatización de Tareas":
+    case "Gestión de Infraestructura y Entornos":
+
+:Seleccionar sistema operativo;
+:Seleccionar tecnologías;
+
+:Seleccionar archivos de script;
+:Subir archivos de script;
+
+:Validar y guardar el script en la base de datos;
+:Script subido con éxito;
+
+stop
+@enduml

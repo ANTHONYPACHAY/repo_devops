@@ -1,0 +1,38 @@
+@startuml
+node "Frontend" {
+    [Angular 17 con PrimeNG 17]
+}
+
+node "Backend" {
+    [Spring Boot 3.3.0]
+    package "Microservices" {
+    [Microservice authentication] as m1
+    [Resource Management Microservice] as m2
+    [Statistics and Analysis Microservice] as m3
+    }
+}
+
+node "Database" {
+    [PostgreSQL]
+}
+
+node "Storage" {
+    [PocketBase]
+}
+
+node "DevOps y CI/CD" {
+    [Docker]
+    [Jenkins]
+}
+
+node "orchestration and communication" {
+    [Eureka]
+}
+
+[Angular 17 con PrimeNG 17] --> [Spring Boot 3.3.0]
+[Spring Boot 3.3.0] --> [PostgreSQL]
+[Spring Boot 3.3.0] --> [PocketBase]
+[Spring Boot 3.3.0] --> [Docker]
+[Docker] --> [Jenkins]
+[Spring Boot 3.3.0] --> [Eureka]
+@enduml

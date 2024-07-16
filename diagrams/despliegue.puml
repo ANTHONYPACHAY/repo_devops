@@ -1,0 +1,39 @@
+@startuml
+node "Client" {
+    [Web Browser]
+}
+
+node "Web Server" {
+    [Angular Frontend]
+    [Spring Boot Backend]
+}
+
+node "Microservices Server" {
+    [Microservice authentication] as m1
+    [Resource Management Microservice] as m2
+    [Statistics and Analysis Microservice] as m3
+}
+
+node "Database Server" {
+    [PostgreSQL]
+}
+
+node "CI/CD Server" {
+    [Jenkins]
+}
+
+node "External Services" {
+    [GitHub]
+    [DockerHub]
+}
+
+[Web Browser] --> [Angular Frontend] : HTTP Request
+[Angular Frontend] --> [Spring Boot Backend] : API Calls
+[Spring Boot Backend] --> [PostgreSQL] : SQL Queries
+[Spring Boot Backend] --> m1 : API Call
+[Spring Boot Backend] --> m2 : API Call
+[Spring Boot Backend] --> m3 : API Call
+[Spring Boot Backend] --> [Jenkins] : Jobs
+[Jenkins] --> [GitHub] : Push/Pull Code
+[Jenkins] --> [DockerHub] : Push/Pull Images
+@enduml

@@ -1,0 +1,19 @@
+@startuml
+package "Repositorio DevOps" {
+    [Angular Frontend] - [Spring Boot Backend]
+    [Spring Boot Backend] - [PostgreSQL Database]
+    [Spring Boot Backend] - [Jenkins CI/CD System]
+}
+
+package "External Services" {
+    [GitHub]
+    [DockerHub]
+}
+
+[Angular Frontend] --> [Spring Boot Backend]
+[Spring Boot Backend] --> [PostgreSQL Database]
+[Spring Boot Backend] --> [Jenkins CI/CD System]
+
+[Jenkins CI/CD System] --> [GitHub]
+[Jenkins CI/CD System] --> [DockerHub]
+@enduml

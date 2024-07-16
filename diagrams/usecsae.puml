@@ -1,0 +1,12 @@
+@startuml
+actor "Usuario" as UR
+
+package "Sistema de Usuario" {
+    usecase "Registro de Usuario" as UC1
+    usecase "Inicio de Sesión" as UC2
+}
+
+UR --> UC1 : "Registrar"
+UR --> UC2 : "Iniciar Sesión"
+UC1 <|- UC2 : Extiende
+@enduml

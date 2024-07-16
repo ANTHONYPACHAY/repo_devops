@@ -1,0 +1,16 @@
+@startuml
+actor "Usuario Registrado" as UR
+actor "Usuario No Registrado" as UNR
+
+package "Sistema de Gestión de Scripts" {
+    usecase "Subir Script" as UC3
+    usecase "Buscar Script" as UC4
+    usecase "Descargar Script" as UC5
+}
+
+UR --> UC3 : "Subir Script"
+UR --> UC4 : "Buscar Script"
+UR --> UC5 : "Descargar Script"
+UNR --> UC4 : "Buscar Script"
+UNR --> UC5 : "Descargar Script"
+@enduml
