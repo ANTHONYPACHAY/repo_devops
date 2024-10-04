@@ -163,7 +163,7 @@ export class ViewAlgorithmComponent implements OnInit, AfterViewInit {
 
     async downloadItem(item: any) {
         console.log(' downloadItem', item);
-        // this.scriptService.downloadFile(item.url, item.name);
+        this.scriptService.downloadFile(item.url, item.name);
         //     const url = window.URL.createObjectURL(item.blob);
         //     const a = document.createElement('a');
         //     a.href = url;

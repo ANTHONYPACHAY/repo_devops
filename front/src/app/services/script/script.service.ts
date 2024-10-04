@@ -139,12 +139,12 @@ export class ScriptService {
     }
 
     readFile(url: string) {
-        let backendUrl = 'https://fm0lg09r-3000.use2.devtunnels.ms/download';
+        let backendUrl = 'https://vercel-view-file.vercel.app/download';
         return this.http.get(`${backendUrl}?url=${encodeURIComponent(url)}`, { responseType: 'blob' });
     }
     downloadFile(url: string, fileName: string): void {
 
-        let backendUrl = 'https://fm0lg09r-3000.use2.devtunnels.ms/download';
+        let backendUrl = 'https://vercel-view-file.vercel.app/download';
 
         this.http.get(`${backendUrl}?url=${encodeURIComponent(url)}`, { responseType: 'blob' })
             .pipe(
