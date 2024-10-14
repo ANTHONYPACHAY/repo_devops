@@ -16,6 +16,8 @@ export class MarkdownComponent  implements OnChanges {
     convertedMarkdown: string;
     type: string;
 
+    editorOptions = { theme: 'vs-dark', language: 'typescript' };
+
     constructor(private scriptService: ScriptService) {
     }
 

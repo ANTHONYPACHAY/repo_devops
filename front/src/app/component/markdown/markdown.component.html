@@ -1,4 +1,6 @@
 <div *ngIf="isMarkDown()" [innerHTML]="convertedMarkdown"></div>
 <pre *ngIf="isCode()" >
-    <code [innerHTML]="convertedMarkdown"></code>
+<!--    <code [innerHTML]="convertedMarkdown"></code>-->
+    <ngx-monaco-editor [options]="editorOptions" [(ngModel)]="convertedMarkdown"></ngx-monaco-editor>
+
 </pre>

@@ -1,9 +1,9 @@
 @startuml
-node "Frontend" {
+node "Front - End" {
     [Angular 17 con PrimeNG 17]
 }
 
-node "Backend" {
+node "Back - End" {
     [Spring Boot 3.3.0]
     package "Microservices" {
     [Microservice authentication] as m1

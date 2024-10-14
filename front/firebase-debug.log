@@ -1,0 +1,49 @@
+[debug] [2024-07-12T17:14:24.043Z] ----------------------------------------------------------------------
+[debug] [2024-07-12T17:14:24.048Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\User\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2024-07-12T17:14:24.049Z] CLI Version:   13.13.1
+[debug] [2024-07-12T17:14:24.049Z] Platform:      win32
+[debug] [2024-07-12T17:14:24.050Z] Node Version:  v20.11.0
+[debug] [2024-07-12T17:14:24.050Z] Time:          Fri Jul 12 2024 12:14:24 GMT-0500 (hora estándar de Colombia)
+[debug] [2024-07-12T17:14:24.050Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-07-12T17:14:24.068Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2024-07-12T17:14:24.373Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-07-12T17:14:24.374Z] > authorizing via signed-in user (angelgiraldo398@gmail.com)
+[debug] [2024-07-12T17:14:24.374Z] [iam] checking project test-5c38d for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2024-07-12T17:14:24.376Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/test-5c38d:testIamPermissions [none]
+[debug] [2024-07-12T17:14:24.377Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/test-5c38d:testIamPermissions x-goog-quota-user=projects/test-5c38d
+[debug] [2024-07-12T17:14:24.377Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/test-5c38d:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2024-07-12T17:14:24.680Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2024-07-12T17:14:24.680Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[debug] [2024-07-12T17:14:24.889Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/test-5c38d:testIamPermissions 401
+[debug] [2024-07-12T17:14:24.889Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/test-5c38d:testIamPermissions {"error":{"code":401,"message":"Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.","status":"UNAUTHENTICATED","details":[{"@type":"type.googleapis.com/google.rpc.ErrorInfo","reason":"ACCESS_TOKEN_TYPE_UNSUPPORTED","metadata":{"method":"google.cloudresourcemanager.v1.Projects.TestIamPermissions","service":"cloudresourcemanager.googleapis.com"}}]}}
+[debug] [2024-07-12T17:14:24.891Z] [iam] error while checking permissions, command may fail: FirebaseError: HTTP Error: 401, Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.
+[debug] [2024-07-12T17:14:24.892Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/test-5c38d [none]
+[debug] [2024-07-12T17:14:25.242Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/test-5c38d 401
+[debug] [2024-07-12T17:14:25.243Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/test-5c38d {"error":{"code":401,"message":"Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.","status":"UNAUTHENTICATED"}}
+[debug] [2024-07-12T17:14:25.243Z] HTTP Error: 401, Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.
+[error] 
+[error] Error: Assertion failed: resolving hosting target of a site with no site name or target name. This should have caused an error earlier
+[debug] [2024-07-12T17:32:04.264Z] ----------------------------------------------------------------------
+[debug] [2024-07-12T17:32:04.267Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\User\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2024-07-12T17:32:04.267Z] CLI Version:   13.13.1
+[debug] [2024-07-12T17:32:04.267Z] Platform:      win32
+[debug] [2024-07-12T17:32:04.267Z] Node Version:  v20.11.0
+[debug] [2024-07-12T17:32:04.267Z] Time:          Fri Jul 12 2024 12:32:04 GMT-0500 (hora estándar de Colombia)
+[debug] [2024-07-12T17:32:04.267Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-07-12T17:32:04.335Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-07-12T17:32:04.336Z] > authorizing via signed-in user (angelgiraldo398@gmail.com)
+[debug] [2024-07-12T17:32:04.336Z] [iam] checking project test-5c38d for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2024-07-12T17:32:04.338Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/test-5c38d:testIamPermissions [none]
+[debug] [2024-07-12T17:32:04.338Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/test-5c38d:testIamPermissions x-goog-quota-user=projects/test-5c38d
+[debug] [2024-07-12T17:32:04.338Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/test-5c38d:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2024-07-12T17:32:04.974Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/test-5c38d:testIamPermissions 401
+[debug] [2024-07-12T17:32:04.974Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/test-5c38d:testIamPermissions {"error":{"code":401,"message":"Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.","status":"UNAUTHENTICATED","details":[{"@type":"type.googleapis.com/google.rpc.ErrorInfo","reason":"ACCESS_TOKEN_TYPE_UNSUPPORTED","metadata":{"service":"cloudresourcemanager.googleapis.com","method":"google.cloudresourcemanager.v1.Projects.TestIamPermissions"}}]}}
+[debug] [2024-07-12T17:32:04.975Z] [iam] error while checking permissions, command may fail: FirebaseError: HTTP Error: 401, Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.
+[debug] [2024-07-12T17:32:04.976Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/test-5c38d [none]
+[debug] [2024-07-12T17:32:05.249Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/test-5c38d 401
+[debug] [2024-07-12T17:32:05.250Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/test-5c38d {"error":{"code":401,"message":"Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.","status":"UNAUTHENTICATED"}}
+[debug] [2024-07-12T17:32:05.250Z] HTTP Error: 401, Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.
+[error] 
+[error] Error: Assertion failed: resolving hosting target of a site with no site name or target name. This should have caused an error earlier

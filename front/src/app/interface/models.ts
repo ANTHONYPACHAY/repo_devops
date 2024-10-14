@@ -78,6 +78,7 @@ export interface Script {
 export interface ViewsDownloads {
     id?: string;
     uid_script?: string;
+    script?: Script;
     date: any;
     type: string;
 }

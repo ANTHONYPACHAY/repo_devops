@@ -4,8 +4,8 @@ node "Client" {
 }
 
 node "Web Server" {
-    [Angular Frontend]
-    [Spring Boot Backend]
+    [Angular Front - End]
+    [Spring Boot Back - End]
 }
 
 node "Microservices Server" {
@@ -27,13 +27,13 @@ node "External Services" {
     [DockerHub]
 }
 
-[Web Browser] --> [Angular Frontend] : HTTP Request
-[Angular Frontend] --> [Spring Boot Backend] : API Calls
-[Spring Boot Backend] --> [PostgreSQL] : SQL Queries
-[Spring Boot Backend] --> m1 : API Call
-[Spring Boot Backend] --> m2 : API Call
-[Spring Boot Backend] --> m3 : API Call
-[Spring Boot Backend] --> [Jenkins] : Jobs
+[Web Browser] --> [Angular Front - End] : HTTP Request
+[Angular Front - End] --> [Spring Boot Back - End] : API Calls
+[Spring Boot Back - End] --> [PostgreSQL] : SQL Queries
+[Spring Boot Back - End] --> m1 : API Call
+[Spring Boot Back - End] --> m2 : API Call
+[Spring Boot Back - End] --> m3 : API Call
+[Spring Boot Back - End] --> [Jenkins] : Jobs
 [Jenkins] --> [GitHub] : Push/Pull Code
 [Jenkins] --> [DockerHub] : Push/Pull Images
 @enduml

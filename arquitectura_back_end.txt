@@ -1,0 +1,79 @@
+1. Microservicio de Autenticación
+Estructura del Proyecto
+
+authentication-service
+├── src
+│   └── main
+│       ├── java
+│       │   └── com.example.authentication
+│       │       ├── AuthenticationServiceApplication.java
+│       │       ├── controller
+│       │       │   └── AuthController.java
+│       │       ├── model
+│       │       │   └── User.java
+│       │       ├── repository
+│       │       │   └── UserRepository.java
+│       │       └── service
+│       │           └── AuthService.java
+│       └── resources
+│           └── application.properties
+└── pom.xml
+
+
+
+2. Microservicio de Gestión de Scripts
+Estructura del Proyecto
+script-service
+├── src
+│   └── main
+│       ├── java
+│       │   └── com.example.script
+│       │       ├── ScriptServiceApplication.java
+│       │       ├── controller
+│       │       │   └── ScriptController.java
+│       │       ├── model
+│       │       │   └── Script.java
+│       │       ├── repository
+│       │       │   └── ScriptRepository.java
+│       │       └── service
+│       │           └── ScriptService.java
+│       └── resources
+│           └── application.properties
+└── pom.xml
+
+
+3. Microservicio de Cálculo de Estadísticas de Dashboard
+Estructura del Proyecto
+
+stats-service
+├── src
+│   └── main
+│       ├── java
+│       │   └── com.example.stats
+│       │       ├── StatsServiceApplication.java
+│       │       ├── controller
+│       │       │   └── StatsController.java
+│       │       ├── model
+│       │       │   └── Stats.java
+│       │       ├── repository
+│       │       │   └── StatsRepository.java
+│       │       └── service
+│       │           └── StatsService.java
+│       └── resources
+│           └── application.properties
+└── pom.xml
+
+
+4. Eureka Server para Orquestación
+Estructura del Proyecto
+
+eureka-server
+├── src
+│   └── main
+│       ├── java
+│       │   └── com.example.eureka
+│       │       └── EurekaServerApplication.java
+│       └── resources
+│           └── application.properties
+└── pom.xml
+

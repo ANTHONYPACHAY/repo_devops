@@ -1,8 +1,8 @@
 @startuml
 package "Repositorio DevOps" {
-    [Angular Frontend] - [Spring Boot Backend]
-    [Spring Boot Backend] - [PostgreSQL Database]
-    [Spring Boot Backend] - [Jenkins CI/CD System]
+    [Angular Front - End] - [Spring Boot Back - End]
+    [Spring Boot Back - End] - [PostgreSQL Database]
+    [Spring Boot Back - End] - [Jenkins CI/CD System]
 }
 
 package "External Services" {
@@ -10,9 +10,9 @@ package "External Services" {
     [DockerHub]
 }
 
-[Angular Frontend] --> [Spring Boot Backend]
-[Spring Boot Backend] --> [PostgreSQL Database]
-[Spring Boot Backend] --> [Jenkins CI/CD System]
+[Angular Front - End] --> [Spring Boot Back - End]
+[Spring Boot Back - End] --> [PostgreSQL Database]
+[Spring Boot Back - End] --> [Jenkins CI/CD System]
 
 [Jenkins CI/CD System] --> [GitHub]
 [Jenkins CI/CD System] --> [DockerHub]

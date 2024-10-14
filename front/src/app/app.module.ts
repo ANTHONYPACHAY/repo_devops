@@ -49,6 +49,7 @@ import {ChipsModule} from "primeng/chips";
 import {AccordionModule} from "primeng/accordion";
 import {BadgeModule} from "primeng/badge";
 import {DividerModule} from "primeng/divider";
+import {MonacoEditorModule} from "ngx-monaco-editor";
 
 @NgModule({
     declarations: [
@@ -96,7 +97,9 @@ import {DividerModule} from "primeng/divider";
         ChipsModule,
         AccordionModule,
         BadgeModule,
-        DividerModule
+        DividerModule,
+
+        MonacoEditorModule.forRoot()
     ],
     providers: [
         {provide: LocationStrategy, useClass: PathLocationStrategy},
