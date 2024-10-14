@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ContactComponent } from './contact.component';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 describe('ContactComponent', () => {
   let component: ContactComponent;
@@ -8,10 +9,11 @@ describe('ContactComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ContactComponent]
+        imports: [BrowserAnimationsModule],
+        declarations: [ContactComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(ContactComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

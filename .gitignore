@@ -15,3 +15,6 @@ front/.firebase/hosting.ZGlzdA.cache
 /backend/eureka/.mvn
 /backend/gestion/.mvn
 /backend/gestion/target
+/backend/node/node_modules
+backend/node/package-lock.json
+backend/node/package-lock.json
